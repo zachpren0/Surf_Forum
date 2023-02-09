@@ -8,8 +8,8 @@ Group Members:
 ---
 ## project description
 This repository contains a website built using the LAMP stack: Linux, Apache, MySQL, PHP; which will allow us to incorporate all elements of a traditional website, including database access, and separation of front and back end. It will be a message board website similar to Reddit/Twitter, where users can engage in discussion online by making posts or making comments on other posts. Administrators will have greater control over particular aspects of the website including moderation of user posts and comments.
-
-
+## stack/dependency install instructions
+<work in progress>
 ## General Website Requirements
 - Original styling on all pages using bootstrap
 - 2 or 3 column layout with components responsive to user input 
