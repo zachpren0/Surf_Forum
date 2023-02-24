@@ -1,6 +1,21 @@
-.banner{
+.bg-blue {
     background-color: #579BB1;
+}
+.bg-beige1 {
+    background-color: #E1D7C6;
+}
+.bg-beige2 {
+    background-color: #ECE8DD;
+}
+.bg-beige3 {
+    background-color: #F8F4EA;
 }
 .title{
     margin: auto;
+}
+.top-buffer {
+    margin-top:20px;
+}
+body {
+    background-color: #ECE8DD !important;
 }
