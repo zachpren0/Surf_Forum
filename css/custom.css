@@ -27,4 +27,9 @@
 }
 body {
     background-color: #ECE8DD !important;
+    overflow-y: scroll;
+}
+.container-fluid .row {
+    margin-left: 0;
+    margin-right: 0;
 }
