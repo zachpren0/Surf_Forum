@@ -1,11 +1,5 @@
 # COSC 360 – Project Proposal
 ---
-Group Members:
-| Name     | Student ID |
-| ----------- | ----------- |
-| Aidan Murphy      | 10967677       |
-| Zachery Prenovost   | 23286388        |
----
 ## project description
 This repository contains a website built using the LAMP stack: Linux, Apache, MySQL, PHP; which will allow us to incorporate all elements of a traditional website, including database access, and separation of front and back end. It will be a message board website similar to Reddit/Twitter, where users can engage in discussion online by making posts or making comments on other posts. Administrators will have greater control over particular aspects of the website including moderation of user posts and comments.
 ## stack/dependency install instructions
