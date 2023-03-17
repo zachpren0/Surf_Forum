@@ -42,3 +42,5 @@ This repository contains a website built using the LAMP stack: Linux, Apache, My
 - Administrators will be able to search for user by name, email or post
 - Administrators will be able to enable/disable users
 - Administrators will be able to edit/remove posts
+ 
+[SITEMAP](https://www.figma.com/file/hqou48heuhd7fXryjGUpdy/SiteMap?node-id=5%3A16&t=ar4I8cN6ngQKnVZ0-1)
