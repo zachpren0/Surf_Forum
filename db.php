@@ -15,7 +15,21 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-echo "connection successful";
+echo "<p>connection successful</p>";
+
+$sql = "SELECT category_title FROM CATEGORY";
+$result = $conn->query($sql);
+echo "<p>";
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    echo "title: " . $row["category_title"]. "<br>";
+  }
+} else {
+  echo "0 results";
+}
+echo "</p>"
+$conn->close();
 
 ?>
     </body>
