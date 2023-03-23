@@ -17,9 +17,9 @@ if ($conn->connect_error) {
 
 echo "<p>connection successful</p>";
 
-$sql = "SELECT * FROM CATEGORY";
-$result = $conn->query($sql);
-echo "<p>";
+// $sql = "SELECT * FROM CATEGORY";
+// $result = $conn->query($sql);
+// echo "<p>";
 // if ($result->num_rows > 0) {
 //   // output data of each row
 //   while($row = $result->fetch_assoc()) {
@@ -28,8 +28,8 @@ echo "<p>";
 // } else {
 //   echo "0 results";
 // }
-echo "QUERY SUCCESS";
-echo "</p>"
+// echo "QUERY SUCCESS";
+// echo "</p>"
 
 ?>
     </body>
