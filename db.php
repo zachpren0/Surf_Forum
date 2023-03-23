@@ -17,7 +17,7 @@ if ($conn->connect_error) {
 
 echo "<p>connection successful</p>";
 
-$sql = "SELECT title FROM CATEGORY";
+$sql = "SELECT * FROM CATEGORY";
 $result = $conn->query($sql);
 echo "<p>";
 // if ($result->num_rows > 0) {
@@ -30,7 +30,6 @@ echo "<p>";
 // }
 echo "QUERY SUCCESS";
 echo "</p>"
-$conn->close();
 
 ?>
     </body>
