@@ -17,7 +17,7 @@ if ($conn->connect_error) {
 
 echo "<p>connection successful</p>";
 
-$sql = "SELECT category_title FROM CATEGORY";
+$sql = "SELECT title FROM CATEGORY";
 $result = $conn->query($sql);
 echo "<p>";
 if ($result->num_rows > 0) {
