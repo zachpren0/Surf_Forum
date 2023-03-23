@@ -5,7 +5,7 @@
 $servername = "localhost";
 $username = "10967677";
 $password = "10967677";
-$dbname = "db_1096767";
+$dbname = "db_10967677";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -17,8 +17,8 @@ if ($conn->connect_error) {
 
 echo "<p>connection successful</p>";
 
-// $sql = "SELECT * FROM CATEGORY";
-// $result = $conn->query($sql);
+$sql = "SELECT * FROM Category";
+$result = $conn->query($sql);
 // echo "<p>";
 // if ($result->num_rows > 0) {
 //   // output data of each row
