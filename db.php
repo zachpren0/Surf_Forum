@@ -19,17 +19,16 @@ echo "<p>connection successful</p>";
 
 $sql = "SELECT * FROM Category";
 $result = $conn->query($sql);
-// echo "<p>";
-// if ($result->num_rows > 0) {
-//   // output data of each row
-//   while($row = $result->fetch_assoc()) {
-//     echo "title: " . $row["category_title"]. "<br>";
-//   }
-// } else {
-//   echo "0 results";
-// }
-// echo "QUERY SUCCESS";
-// echo "</p>"
+echo "<p>";
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    echo "title: " . $row["category_title"]. "<br>";
+  }
+} else {
+  echo "0 results";
+}
+echo "</p>"
 
 ?>
     </body>
