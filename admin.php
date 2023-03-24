@@ -19,14 +19,14 @@
                   </div>
 
                   <div class="col-6 d-flex align-items-center justify-content-center offset-1">
-                    <h1 class="display-4"><a class="nav-link" href="home.html">Surf - Forum</a></h1>
+                    <h1 class="display-4"><a class="nav-link" href="home.php">Surf - Forum</a></h1>
                   </div>
 
                   <div class="col-2 d-flex align-items-end justify-content-end">
                     <nav class="nav">
-                      <a class="nav-link text-black" href="signup.html">Signup</a>
-                      <a class="nav-link text-black" href="login.html">Login</a>
-                      <a class="nav-link text-black" href="admin.html">Admin</a>
+                      <a class="nav-link text-black" href="signup.php">Signup</a>
+                      <a class="nav-link text-black" href="login.php">Login</a>
+                      <a class="nav-link text-black" href="admin.php">Admin</a>
                     </nav>
 
                 </div>
@@ -40,7 +40,7 @@
                     <div class="col-4 rounded bg-beige1">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item active"><a href="home.html">Home</a></li>
+                                <li class="breadcrumb-item active"><a href="home.php">Home</a></li>
                                 <li class="breadcrumb-item active">Admin</li>
                             </ol>
                         </nav>
@@ -100,8 +100,8 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <th scope="row"><a href="account.html"> User_Name </a></th>
-                        <td><a href="post.html"> Post_Name </a></td>
+                        <th scope="row"><a href="account.php"> User_Name </a></th>
+                        <td><a href="post.php"> Post_Name </a></td>
                         
                       </tr>
                       <tr>

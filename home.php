@@ -19,14 +19,14 @@
                   </div>
 
                   <div class="col-6 d-flex align-items-center justify-content-center offset-1">
-                    <h1 class="display-4"><a class="nav-link" href="home.html">Surf - Forum</a></h1>
+                    <h1 class="display-4"><a class="nav-link" href="home.php">Surf - Forum</a></h1>
                   </div>
 
                   <div class="col-2 d-flex align-items-end justify-content-end">
                     <nav class="nav">
-                      <a class="nav-link text-black" href="signup.html">Signup</a>
-                      <a class="nav-link text-black" href="login.html">Login</a>
-                      <a class="nav-link text-black" href="admin.html">Admin</a>
+                      <a class="nav-link text-black" href="signup.php">Signup</a>
+                      <a class="nav-link text-black" href="login.php">Login</a>
+                      <a class="nav-link text-black" href="admin.php">Admin</a>
                     </nav>
 
                 </div>
@@ -62,7 +62,7 @@
                   <ul class="nav flex-column">
 
                     <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="category.html">SurfSpots</a>
+                      <a class="nav-link active" aria-current="page" href="category.php">SurfSpots</a>
                     </li>
 
                   </ul>
@@ -82,7 +82,7 @@
                 <div class="row border-beige1">
                   <div class="row">
                     <div class="col-10">
-                      <h3 class="display-7 text-left"><u><a href="post.html"> Post_Name </a></u></h3>
+                      <h3 class="display-7 text-left"><u><a href="post.php"> Post_Name </a></u></h3>
                       <p>surfBum69</p>
                     </div>
                     <!-- admin tools
@@ -110,7 +110,7 @@
                 <div class="row border-beige1">
                   <div class="row">
                     <div class="col-10">
-                      <h3 class="display-7 text-left"><u><a href="post.html"> Post_Name_2 </a></u></h3>
+                      <h3 class="display-7 text-left"><u><a href="post.php"> Post_Name_2 </a></u></h3>
                       <p>surfBum44</p>
                     </div>
                     <!-- admin tools
