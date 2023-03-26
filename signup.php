@@ -34,12 +34,9 @@ include_once 'header.php';
                               <label for="pwd" class="form-label">Password</label>
                               <input type="password" name="pwd" class="form-control required" id="pass1">
                               <label for="pwd2" class="form-label mt-2"> Repeat Password</label>
-                              <input type="password" name="pwd2" class="form-control required" id="pass1">
+                              <input type="password" name="pwd2" class="form-control required" id="pass2">
                             </div>
-                            <div class="mb-3 form-check">
-                              <input type="checkbox" name="terms"   class="form-check-input required" id="terms">
-                              <label class="form-check-label" for="terms">I agree to <a href="https://en.wikipedia.org/wiki/Mallard">the terms of service</a></label>
-                            </div>
+                            
                             <div class="mb-5 text-center d-grid gap-2 col-12 mx-auto">
                               <button type="submit" name="submit" class="btn bg-blue">Submit</button>
                             </div>
