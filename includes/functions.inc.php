@@ -11,6 +11,8 @@
         echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
     }
 
+//signup functions
+
 function emptySignupInput($email,$username,$password,$password2) {
     $result;
 
@@ -97,4 +99,46 @@ function createUser($conn,$email,$username,$password){
     header("location: ../signup.php?error=none");
     exit();
   
+}
+
+
+//login functions
+function emptySignupInput($username,$password) {
+    $result;
+
+    
+
+    if ( empty($username) || empty($password)  ){
+        $result = true;
+    }
+    else{
+        $result = false;
+    }
+    return $result;
+}
+function loginUser($conn,$username,$password){
+
+    $uidExists = uidExists($conn, $username, $username);
+
+    if ($uidExists === false){
+        header("location: ../login.php?error=wrongLogin");
+        exit();
+    }
+
+    $passwordHashed = $uidExists["password_hash"];
+
+    $checkPassword = password_verify($password,$passwordHashed);
+
+    if ( $checkPassword === false) {
+        header("location: ../login.php?error=wrongLogin");
+        exit();
+    } else if ($checkPassword === true){
+        session_start();
+        $_SESSION["userid"] = $uidExists["id"];
+        $_SESSION["username"] = $uidExists["username"];
+        header("location: ../home.php");
+        exit();
+    }
+
+
 }
