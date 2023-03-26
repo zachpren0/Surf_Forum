@@ -103,6 +103,7 @@ function createUser($conn,$email,$username,$password){
 
 
 //login functions
+/*
 function emptySignupInput($username,$password) {
     $result;
 
@@ -116,6 +117,7 @@ function emptySignupInput($username,$password) {
     }
     return $result;
 }
+*/
 function loginUser($conn,$username,$password){
 
     $uidExists = uidExists($conn, $username, $username);
