@@ -18,7 +18,7 @@ if (isset($_POST["submit"])){
     
 
     if (emptySignupInput($email,$username,$password,$password2) !== false) {
-        //header("location: ../signup.php?error=emptyInput");
+        header("location: ../signup.php?error=emptyInput");
         exit();
     }
     if (invalidUid($username) !== false) {

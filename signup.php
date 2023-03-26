@@ -41,8 +41,37 @@ include_once 'header.php';
                               <button type="submit" name="submit" class="btn bg-blue">Submit</button>
                             </div>
                           </form>
+                          <?php
+                            if(isset($_GET["error"])){
+                              if ($_GET["error"]== "emptyInput"){
+                                echo "<p>Missing Fields</p>";
+                            } 
+                            else if ($_GET["error"]== "invalidUid"){
+                              echo "<p>Username Invalid</p>";
+                            }
+                            else if ($_GET["error"]== "invalidEmail"){
+                              echo "<p>Email Invalid</p>";
+                            }
+                            else if ($_GET["error"]== "passwordMatch"){
+                              echo "<p>Please ensure passwords match</p>";
+                            }
+                            else if ($_GET["error"]== "usernameTaken"){
+                              echo "<p>Username or Email is already signed up</p>";
+                            }
+                            else if ($_GET["error"] == "stmtFailed"){
+                              echo "<p>uh oh, something went wrong! try again</p>";
+                            }
+                            else if ($_GET["error"] == "none"){
+                              echo "<p>Congrats! you signed up</p>";
+                            }
+                          }
 
-                    </div>
+                          ?>
+                          </div>
+                          
+                        
+              
+                    
             </div>
           </div>
             
