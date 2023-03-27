@@ -35,20 +35,9 @@ include_once 'header.php';
             <div class="row top-buffer">
 
             <!--left container-->
-              <div class="col-3 gx-5">
-                <div class="row bg-beige1 rounded-top">
-                  <h3 class="display-7 text-center">Categories</h1>
-                </div>
-                <div class="row bg-beige3 rounded-bottom min-vh-100">
-                  <ul class="nav flex-column">
-
-                    <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="category.php">SurfSpots</a>
-                    </li>
-
-                  </ul>
-                </div>
-              </div>
+            <?php
+              include_once 'categoryList.php';
+            ?>
               <!-- end left contatiner-->
 
                 <!-- post container  -->

@@ -1,5 +1,20 @@
 <?php
 include_once 'header.php';
+include_once 'includes/db.inc.php';
+include_once 'includes/functions.inc.php';
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+$postTitle = "none";
+$postId = "none";
+if(isset($_GET['postTitle'])) {
+  $postTitle = $_GET['postTitle'];
+}
+if(isset($_GET['postId'])) {
+  $postId = $_GET['postId'];
+}
 ?>
 
         <main>
@@ -8,7 +23,8 @@ include_once 'header.php';
               <div class="col-9 rounded bg-beige1">
                   <nav aria-label="breadcrumb">
                       <ol class="breadcrumb">
-                        <li class="breadcrumb-item active">Home</li>
+                        <li class="breadcrumb-item active"><a href="home.php">Home</a></li>
+                        <li class="breadcrumb-item active"> <?php echo $postTitle; ?> </li>
                       </ol>
                   </nav>
               </div>
@@ -23,61 +39,63 @@ include_once 'header.php';
 
       <div class="container-fluid">
             <div class="row top-buffer">
-              <div class="col-3 gx-5">
-                <div class="row bg-beige1 rounded-top">
-                  <h3 class="display-7 text-center">Categories</h1>
-                </div>
-                <div class="row bg-beige3 rounded-bottom min-vh-100">
-                  <ul class="nav flex-column">
 
-                    <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="category.php">SurfSpots</a>
-                    </li>
 
-                  </ul>
-                </div>
-              </div>
+              <?php
+              include_once 'categoryList.php';
+              ?>
+
+
                 <div class="col-9 gx-5">
                   <div class="row bg-beige1 rounded-top p-1">
-                    <div class="col-2">
-                    <button type="button" class="btn bg-blue d-inline">Create new post</button>
-                  </div>
+                    
                   <div class="col-10">
-                    <h3 class="display-7 text-center"> Post_Name </h3>
+                    <h3 class="display-7 text-center"> <?php echo $postTitle; ?> </h3>
                     
                   </div>
                 </div>
 
-                <div class="row border-beige1">
-                  <div class="row">
-                    <div class="col-10">
-                      <h3 class="display-7 text-left"><u><a href="#"> Post_Name </a></u></h3>
-                      <p>surfBum69</p>
-                    </div>
-                    <!-- admin tools
-                    <div class="col-2">
-                      <a href="#">edit</a>
-                      <a href="#">delete</a>
-                    </div>
-                     -->
-                  </div>
-                  <div class="row">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean interdum porttitor dolor, et pretium urna volutpat sit amet. Nunc interdum faucibus lorem, vitae sollicitudin sem sodales quis. Maecenas pharetra metus eget magna pellentesque ultrices. Sed ut egestas lacus. Sed non nibh lectus. Integer a pharetra justo. Mauris egestas congue finibus. Cras malesuada tortor a mauris convallis lobortis. Aenean bibendum dui sit amet mi facilisis, quis viverra ipsum tincidunt. Pellentesque euismod tortor a ante mollis facilisis. Curabitur efficitur turpis vel nisl vehicula pellentesque. Quisque condimentum posuere neque nec posuere.
+                <!-- post -->
+                <?php
+                  $stmt = mysqli_stmt_init($conn);
+                  $sql = "SELECT * FROM POST WHERE post_id=?;";
+                  if (!mysqli_stmt_prepare($stmt, $sql)){
+                    header("location: ../post.php?error=stmtFailed");
+                  }
+                  mysqli_stmt_bind_param($stmt, "s", $postId);
+                  mysqli_stmt_execute($stmt);
 
-                      In viverra finibus est, in rutrum justo cursus id. Suspendisse faucibus, urna non pulvinar consectetur, mauris lorem convallis mi, a aliquet sapien tellus vitae justo. Aenean in nisi vel libero accumsan pellentesque. Nunc semper diam nisl, vestibulum efficitur nulla malesuada a. Morbi eu lectus congue, accumsan lacus id, dapibus sem. Quisque iaculis faucibus libero, non consequat ante venenatis ut. Suspendisse massa libero, hendrerit in elit sed, tempor facilisis quam. Vivamus consectetur ultricies eros, quis congue mi sollicitudin et. Etiam ut fringilla nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus malesuada magna a mi vulputate rutrum.
-                      
-                      Vivamus malesuada et eros a tristique. Morbi tempor, ligula id rhoncus fringilla, arcu est luctus nisl, et blandit odio turpis tincidunt libero. Sed vitae venenatis ipsum. Fusce vulputate commodo eros eu egestas. Fusce id metus eget ante euismod luctus at eget purus. Morbi mattis tempus augue, nec iaculis justo pellentesque hendrerit. Mauris lacinia sed nibh nec consectetur. Vivamus eget mauris in mauris commodo semper. Nunc quis erat vitae diam cursus tempor eget sit amet eros. Nullam ac purus orci. Donec ut leo placerat, sodales augue ac, luctus ipsum. Vestibulum dui tortor, rhoncus non maximus a, rutrum quis erat.
-                      
-                      Pellentesque a suscipit justo. Proin elementum quis justo sed tempus. Nunc nulla dui, accumsan sit amet placerat vitae, pretium eu justo. Sed pretium aliquet orci, maximus mattis nibh porttitor quis. Mauris eget sapien eu neque ullamcorper vehicula. Ut congue placerat commodo. Duis semper, nulla interdum consectetur lobortis, nulla eros tincidunt orci, non porttitor purus velit vel eros. Quisque ac lacus in est mattis mattis vel vel tellus. Donec a lobortis augue. Suspendisse in elementum ante. Integer convallis tellus et nunc efficitur congue. Morbi non lacinia quam, at sagittis ipsum. Maecenas posuere iaculis eros.
-                      
-                      Vestibulum posuere ante nec ante sagittis, a interdum mauris venenatis. Vivamus faucibus arcu nec sapien vulputate vulputate. Proin nec augue elementum, sagittis dolor non, tincidunt neque. Praesent elementum mauris nec massa sagittis, non cursus lorem consequat. Nulla erat arcu, dapibus ut enim non, luctus rhoncus dolor. Vestibulum enim erat, egestas ac imperdiet vel, placerat at leo. Donec iaculis orci eu lacus euismod sodales.
-                    </p>
-                  </div>
-                  <div class="row">
-                    <button type="button" class="btn bg-blue d-inline" data-bs-toggle="modal" data-bs-target="#makeComment">Comment</button>
-                </div>
-                </div>
+                  $result = mysqli_stmt_get_result($stmt);
+                  debug_to_console($result->num_rows);
+                  if($result->num_rows > 0){
+                    while($row = $result->fetch_assoc()) {
+                      echo '<div class="row border-beige1">';
+                      echo '<div class="row">';
+                  echo '<div class="col-10">';
+                    echo '<h3 class="display-7 text-left"><u><a href="#">'.$row['title'].'</a></u></h3>';
+                      echo '<p>User no.'.$row['user_id'].'</p>';
+                      echo '</div>';
+                    echo '<div class="col-2">';
+                    echo '<a href="#">edit</a>';
+                      echo '<a href="#">delete</a>';
+                      echo '</div>';
+                    echo '</div>';
+                  echo '<div class="row">';
+                  echo '<p>';
+                      echo $row['body'];
+                      echo '</p>';
+                    echo '</div>';
+                  echo '<div class="row">';
+                  echo '<button type="button" class="btn bg-blue d-inline" data-bs-toggle="modal" data-bs-target="#makeComment">Comment</button>';
+                    echo '</div>';
+                echo '</div>';
+                    }
+                }else {
+                  echo "No posts found";
+                }
+                  
+                  mysqli_stmt_close($stmt);
+                ?>
 
                 <!-- create new comment modal-->
                 <div class="modal fade" id="makeComment" tabindex="-1" aria-labelledby="profile" aria-hidden="true">
@@ -101,64 +119,44 @@ include_once 'header.php';
                     </div>
                   </div>
 
-                <div class="row border-beige1">
-                  <div class="row">
-                    <div class="col-10">
-                      <p>surfBum44</p>
-                    </div>
-                    <!-- admin tools
-                    <div class="col-2">
-                      <a href="#">edit</a>
-                      <a href="#">delete</a>
-                    </div>
-                     -->
-                  </div>
-                  <div class="row">
-                    <p>
-                                I don't think this is a very good post
-                    </p>
-                  </div>
-                </div>
 
-                <div class="row border-beige1">
-                  <div class="row">
-                    <div class="col-10">
-                      <p>surfBum69</p>
-                    </div>
-                    <!-- admin tools
-                    <div class="col-2">
-                      <a href="#">edit</a>
-                      <a href="#">delete</a>
-                    </div>
-                     -->
-                  </div>
-                  <div class="row">
-                    <p>
-                                Eat it
-                    </p>
-                  </div>
-                </div>
+                  <!-- comments -->
+                <?php
+                  $stmt = mysqli_stmt_init($conn);
+                  $sql = "SELECT * FROM COMMENT WHERE discussion_id=?;";
+                  if (!mysqli_stmt_prepare($stmt, $sql)){
+                    header("location: ../post.php?error=stmtFailed");
+                  }
+                  mysqli_stmt_bind_param($stmt, "s", $postId);
+                  mysqli_stmt_execute($stmt);
 
-                <div class="row border-beige1">
-                  <div class="row">
-                    <div class="col-10">
-                      <p>surfBum69</p>
-                    </div>
-                    <!-- admin tools
-                    <div class="col-2">
-                      <a href="#">edit</a>
-                      <a href="#">delete</a>
-                    </div>
-                     -->
-                  </div>
-                  <div class="row">
-                    <p>
-                                Lick me
-                    </p>
-                  </div>
-                </div>
-
-                
+                  $result = mysqli_stmt_get_result($stmt);
+                  debug_to_console($result->num_rows);
+                  if($result->num_rows > 0){
+                    while($row = $result->fetch_assoc()) {
+                      echo '<div class="row border-beige1">';
+                      echo '<div class="row">';
+                      echo '<div class="col-10">';
+                      echo '<p>user no.'.$row['user_id'].'</p>';
+                      echo '</div>';
+                      echo '<div class="col-2">';
+                      echo '<a href="#">edit</a>';
+                      echo  '<a href="#">delete</a>';
+                      echo  '</div>';
+                      echo  '</div>';
+                      echo  '<div class="row">';
+                      echo  '<p>';
+                        echo $row['body'];   
+                      echo    '</p>';
+                      echo  '</div>';
+                      echo '</div>';
+                    }
+                  }else {
+                    echo 'No comments yet';
+                  }
+                    
+                    mysqli_stmt_close($stmt);
+                ?>
 
               </div>
             </div>
