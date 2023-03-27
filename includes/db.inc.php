@@ -5,8 +5,8 @@
         //COSC 360 CONNECTION
         
         $servername = "localhost";
-        $username = "10967677";
-        $password = "10967677";
+        $dbUsername = "10967677";
+        $dbPassword = "10967677";
         $dbname = "db_10967677";
         
 
