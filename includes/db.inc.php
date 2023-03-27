@@ -3,23 +3,23 @@
 
 
         //COSC 360 CONNECTION
-        
+        /*
         $servername = "localhost";
         $dbUsername = "10967677";
         $dbPassword = "10967677";
         $dbname = "db_10967677";
-        
+        */
 
         //LOCALHOST TESTING
-        /*
+        
         $servername = "localhost";
         $dbUsername = "root";
         $dbPassword = "";
         $dbname = "db_10967677";
-        */
+        
 
         // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
+        $conn = new mysqli($servername, $dbUsername, $dbPassword, $dbname);
         // Check connection
 
         /*

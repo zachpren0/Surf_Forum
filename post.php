@@ -66,7 +66,7 @@ if(isset($_GET['postId'])) {
                   mysqli_stmt_execute($stmt);
 
                   $result = mysqli_stmt_get_result($stmt);
-                  debug_to_console($result->num_rows);
+                  //debug_to_console($result->num_rows);
                   if($result->num_rows > 0){
                     while($row = $result->fetch_assoc()) {
                       echo '<div class="row border-beige1">';
@@ -76,8 +76,15 @@ if(isset($_GET['postId'])) {
                       echo '<p>User no.'.$row['user_id'].'</p>';
                       echo '</div>';
                     echo '<div class="col-2">';
+                          debug_to_console($_SESSION["userid"]);
+                          debug_to_console($row["user_id"]);
+                      if (isset($_SESSION["userid"])) {
+                        if ($_SESSION["userid"] === $row['user_id'] || isset($_SESSION["admin"]) ){
+                          
                     echo '<a href="#">edit</a>';
                       echo '<a href="#">delete</a>';
+                        }
+                    }
                       echo '</div>';
                     echo '</div>';
                   echo '<div class="row">';
@@ -131,7 +138,7 @@ if(isset($_GET['postId'])) {
                   mysqli_stmt_execute($stmt);
 
                   $result = mysqli_stmt_get_result($stmt);
-                  debug_to_console($result->num_rows);
+                  //debug_to_console($result->num_rows);
                   if($result->num_rows > 0){
                     while($row = $result->fetch_assoc()) {
                       echo '<div class="row border-beige1">';
@@ -140,8 +147,12 @@ if(isset($_GET['postId'])) {
                       echo '<p>user no.'.$row['user_id'].'</p>';
                       echo '</div>';
                       echo '<div class="col-2">';
-                      echo '<a href="#">edit</a>';
-                      echo  '<a href="#">delete</a>';
+                      if (isset($_SESSION["userid"])) {
+                        if ($_SESSION["userid"] === $row['user_id'] || isset($_SESSION["admin"]) ){
+                    echo '<a href="#">edit</a>';
+                      echo '<a href="#">delete</a>';
+                        }
+                    }
                       echo  '</div>';
                       echo  '</div>';
                       echo  '<div class="row">';
