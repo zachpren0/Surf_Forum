@@ -93,7 +93,7 @@ if(isset($_GET['postId'])) {
                       echo '</p>';
                     echo '</div>';
                   echo '<div class="row">';
-                  echo '<button type="button" class="btn bg-blue d-inline" data-bs-toggle="modal" data-bs-target="#makeComment">Comment</button>';
+                  if(isset($_SESSION['userid'])){echo '<button type="button" class="btn bg-blue d-inline" data-bs-toggle="modal" data-bs-target="#makeComment">Comment</button>';}
                     echo '</div>';
                 echo '</div>';
                     }
@@ -110,21 +110,37 @@ if(isset($_GET['postId'])) {
                 <div class="modal fade" id="makeComment" tabindex="-1" aria-labelledby="profile" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
-                        <form method="post" id="commentForm" action="http://www.randyconnolly.com/tests/process.php">
+
+                      <form method="post" id="commentForm" action="includes/comment.inc.php">
                         <div class="modal-header">
                           <h5 class="modal-title" id="changeProfileHeading">Profile</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
+                              <label for="postId" class="form-label">Post ID</label>
+                              <input type="text" name="postId" class="form-control required" id="postId" value="<?php echo $postId ?>" readonly>
+                              <div id="userHelp" class="form-text">This cannot be changed</div>
+
+                              <label for="username" class="form-label">Post Name</label>
+                              <input type="text" name="postTitle" class="form-control required" id="postTitle" value="<?php echo $postTitle ?>" readonly>
+                              <div id="userHelp" class="form-text">This cannot be changed</div>
+
+                              <label for="userId" class="form-label">User ID</label>
+                              <input type="text" name="userId" class="form-control required" id="userId" value="<?php if (isset($_SESSION['userid'])){echo $_SESSION['userid'];} ?>" readonly>
+                              <div id="userHelp" class="form-text">This is determined by your login credentials and cannot be changed</div>
+
+
+                              
                                 Type your comment here:
-                              <textarea name="Comment" rows="5" cols="61"  class="form-control required" id="InputBreak" value="Account_Break"></textarea>
+                              <textarea name="newCommentBody" rows="5" cols="61"  class="form-control required" id="InputBreak" value="Account_Break"></textarea>
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="submit" class="btn btn-primary">Create Comment</button>
+                          <button type="submit" name="submit" class="btn btn-primary">Create Comment</button>
                         </div>
                       </div>
                     </form>
+
                     </div>
                   </div>
 

@@ -173,4 +173,14 @@ function delete ($conn, $sql, $deleteId){
     mysqli_stmt_bind_param($stmt, "s", $deleteId);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
+//comment creation
+function emptyCommentInput($postId,$postName,$newCommentBody) {
+    $result;
+    if ( empty($postId) || empty($postName) || empty($newCommentBody) ){
+        $result = true;
+    }
+    else{
+        $result = false;
+    }
+    return $result;
 }

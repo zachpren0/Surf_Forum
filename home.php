@@ -2,116 +2,122 @@
 include_once 'header.php';
 ?>
 
-        <main>
-           <?php  // add some php to load the breadcrumb bar 
-        
-            ?>
+<main>
           <div class="container-fluid">
             <div class="row top-buffer">
-              <div class="col-9 rounded bg-beige1">
-                  <nav aria-label="breadcrumb">
-                      <ol class="breadcrumb">
+                <div class="col-9 rounded bg-beige1">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
                         <li class="breadcrumb-item active">Home</li>
-                      </ol>
-                  </nav>
-              </div>
-              <!--END BREADCRUMB-->
-
-              <?php  // add some php to deal with search querry
-        
-              ?>
-              <div class="col-3">
-                <div class="input-group">
-                  <input type="search" class="form-control rounded-left" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                  <button type="button" class="btn bg-blue text-black">search</button>
+                        </ol>
+                    </nav>
                 </div>
-              </div>
-            </div>
+                    <div class="col-3">
+                        <div class="input-group">
+                        <input type="search" class="form-control rounded-left" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                        <button type="button" class="btn bg-blue text-black">search</button>
+                        </div>
+                    </div>
           </div>
-          <!--END SEARCH-->
-
-          <!--MAIN CONTAINER-->
+      </div>
       <div class="container-fluid">
             <div class="row top-buffer">
 
-            <!--left container-->
             <?php
               include_once 'categoryList.php';
             ?>
-              <!-- end left contatiner-->
 
-                <!-- post container  -->
 
                 <div class="col-9 gx-5">
-
-                  <!--post container header -->
                   <div class="row bg-beige1 rounded-top p-1">
                     <div class="col-2">
-                    <button type="button" class="btn bg-blue d-inline">Create new post</button>
+                    <?php if(isset($_SESSION['userid'])){echo '<button type="button" class="btn bg-blue d-inline" data-bs-toggle="modal" data-bs-target="#makePost">Create new post</button>';} ?>  
                   </div>
                   <div class="col-10">
-                    <h3 class="display-7 text-center"> Recent Posts </h3>
+                    <h3 class="display-7 text-center"> Recent</h3>
                     
                   </div>
                 </div>
 
 
+                <div class="modal fade" id="makePost" tabindex="-1" aria-labelledby="profile" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
 
-                <div class="row border-beige1">
-                  <div class="row">
-                    <div class="col-10">
-                      <h3 class="display-7 text-left"><u><a href="post.php"> Post_Name </a></u></h3>
-                      <p>surfBum69</p>
-                    </div>
-                    <!-- admin tools
-                    <div class="col-2">
-                      <a href="#">edit</a>
-                      <a href="#">delete</a>
-                    </div>
-                     -->
-                  </div>
-                  <div class="row">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean interdum porttitor dolor, et pretium urna volutpat sit amet. Nunc interdum faucibus lorem, vitae sollicitudin sem sodales quis. Maecenas pharetra metus eget magna pellentesque ultrices. Sed ut egestas lacus. Sed non nibh lectus. Integer a pharetra justo. Mauris egestas congue finibus. Cras malesuada tortor a mauris convallis lobortis. Aenean bibendum dui sit amet mi facilisis, quis viverra ipsum tincidunt. Pellentesque euismod tortor a ante mollis facilisis. Curabitur efficitur turpis vel nisl vehicula pellentesque. Quisque condimentum posuere neque nec posuere.
 
-                      In viverra finibus est, in rutrum justo cursus id. Suspendisse faucibus, urna non pulvinar consectetur, mauris lorem convallis mi, a aliquet sapien tellus vitae justo. Aenean in nisi vel libero accumsan pellentesque. Nunc semper diam nisl, vestibulum efficitur nulla malesuada a. Morbi eu lectus congue, accumsan lacus id, dapibus sem. Quisque iaculis faucibus libero, non consequat ante venenatis ut. Suspendisse massa libero, hendrerit in elit sed, tempor facilisis quam. Vivamus consectetur ultricies eros, quis congue mi sollicitudin et. Etiam ut fringilla nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus malesuada magna a mi vulputate rutrum.
-                      
-                      Vivamus malesuada et eros a tristique. Morbi tempor, ligula id rhoncus fringilla, arcu est luctus nisl, et blandit odio turpis tincidunt libero. Sed vitae venenatis ipsum. Fusce vulputate commodo eros eu egestas. Fusce id metus eget ante euismod luctus at eget purus. Morbi mattis tempus augue, nec iaculis justo pellentesque hendrerit. Mauris lacinia sed nibh nec consectetur. Vivamus eget mauris in mauris commodo semper. Nunc quis erat vitae diam cursus tempor eget sit amet eros. Nullam ac purus orci. Donec ut leo placerat, sodales augue ac, luctus ipsum. Vestibulum dui tortor, rhoncus non maximus a, rutrum quis erat.
-                      
-                      Pellentesque a suscipit justo. Proin elementum quis justo sed tempus. Nunc nulla dui, accumsan sit amet placerat vitae, pretium eu justo. Sed pretium aliquet orci, maximus mattis nibh porttitor quis. Mauris eget sapien eu neque ullamcorper vehicula. Ut congue placerat commodo. Duis semper, nulla interdum consectetur lobortis, nulla eros tincidunt orci, non porttitor purus velit vel eros. Quisque ac lacus in est mattis mattis vel vel tellus. Donec a lobortis augue. Suspendisse in elementum ante. Integer convallis tellus et nunc efficitur congue. Morbi non lacinia quam, at sagittis ipsum. Maecenas posuere iaculis eros.
-                      
-                      Vestibulum posuere ante nec ante sagittis, a interdum mauris venenatis. Vivamus faucibus arcu nec sapien vulputate vulputate. Proin nec augue elementum, sagittis dolor non, tincidunt neque. Praesent elementum mauris nec massa sagittis, non cursus lorem consequat. Nulla erat arcu, dapibus ut enim non, luctus rhoncus dolor. Vestibulum enim erat, egestas ac imperdiet vel, placerat at leo. Donec iaculis orci eu lacus euismod sodales.
-                    </p>
-                  </div>
-                </div>
+                        <form method="post" id="commentForm" action="includes/post.inc.php">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="changeProfileHeading">Profile</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                              <label for="categoryId" class="form-label">Category ID</label>
+                              <input type="text" name="categoryId" class="form-control required" id="categoryId" value="5" readonly>
+                              <div id="userHelp" class="form-text">This cannot be changed</div>
 
-                <div class="row border-beige1">
-                  <div class="row">
-                    <div class="col-10">
-                      <h3 class="display-7 text-left"><u><a href="post.php"> Post_Name_2 </a></u></h3>
-                      <p>surfBum44</p>
-                    </div>
-                    <!-- admin tools
-                    <div class="col-2">
-                      <a href="#">edit</a>
-                      <a href="#">delete</a>
-                    </div>
-                     -->
-                  </div>
-                  <div class="row">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean interdum porttitor dolor, et pretium urna volutpat sit amet. Nunc interdum faucibus lorem, vitae sollicitudin sem sodales quis. Maecenas pharetra metus eget magna pellentesque ultrices. Sed ut egestas lacus. Sed non nibh lectus. Integer a pharetra justo. Mauris egestas congue finibus. Cras malesuada tortor a mauris convallis lobortis. Aenean bibendum dui sit amet mi facilisis, quis viverra ipsum tincidunt. Pellentesque euismod tortor a ante mollis facilisis. Curabitur efficitur turpis vel nisl vehicula pellentesque. Quisque condimentum posuere neque nec posuere.
+                              <label for="username" class="form-label">Category Name</label>
+                              <input type="text" name="categoryName" class="form-control required" id="categoryName" value="General" readonly>
+                              <div id="userHelp" class="form-text">This cannot be changed</div>
 
-                      In viverra finibus est, in rutrum justo cursus id. Suspendisse faucibus, urna non pulvinar consectetur, mauris lorem convallis mi, a aliquet sapien tellus vitae justo. Aenean in nisi vel libero accumsan pellentesque. Nunc semper diam nisl, vestibulum efficitur nulla malesuada a. Morbi eu lectus congue, accumsan lacus id, dapibus sem. Quisque iaculis faucibus libero, non consequat ante venenatis ut. Suspendisse massa libero, hendrerit in elit sed, tempor facilisis quam. Vivamus consectetur ultricies eros, quis congue mi sollicitudin et. Etiam ut fringilla nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus malesuada magna a mi vulputate rutrum.
-                      
-                      Vivamus malesuada et eros a tristique. Morbi tempor, ligula id rhoncus fringilla, arcu est luctus nisl, et blandit odio turpis tincidunt libero. Sed vitae venenatis ipsum. Fusce vulputate commodo eros eu egestas. Fusce id metus eget ante euismod luctus at eget purus. Morbi mattis tempus augue, nec iaculis justo pellentesque hendrerit. Mauris lacinia sed nibh nec consectetur. Vivamus eget mauris in mauris commodo semper. Nunc quis erat vitae diam cursus tempor eget sit amet eros. Nullam ac purus orci. Donec ut leo placerat, sodales augue ac, luctus ipsum. Vestibulum dui tortor, rhoncus non maximus a, rutrum quis erat.
-                      
-                      Pellentesque a suscipit justo. Proin elementum quis justo sed tempus. Nunc nulla dui, accumsan sit amet placerat vitae, pretium eu justo. Sed pretium aliquet orci, maximus mattis nibh porttitor quis. Mauris eget sapien eu neque ullamcorper vehicula. Ut congue placerat commodo. Duis semper, nulla interdum consectetur lobortis, nulla eros tincidunt orci, non porttitor purus velit vel eros. Quisque ac lacus in est mattis mattis vel vel tellus. Donec a lobortis augue. Suspendisse in elementum ante. Integer convallis tellus et nunc efficitur congue. Morbi non lacinia quam, at sagittis ipsum. Maecenas posuere iaculis eros.
-                      
-                      Vestibulum posuere ante nec ante sagittis, a interdum mauris venenatis. Vivamus faucibus arcu nec sapien vulputate vulputate. Proin nec augue elementum, sagittis dolor non, tincidunt neque. Praesent elementum mauris nec massa sagittis, non cursus lorem consequat. Nulla erat arcu, dapibus ut enim non, luctus rhoncus dolor. Vestibulum enim erat, egestas ac imperdiet vel, placerat at leo. Donec iaculis orci eu lacus euismod sodales.
-                    </p>
+                              <label for="userId" class="form-label">User ID</label>
+                              <input type="text" name="userId" class="form-control required" id="userId" value="<?php if (isset($_SESSION['userid'])){echo $_SESSION['userid'];} ?>" readonly>
+                              <div id="userHelp" class="form-text">This is determined by your login credentials and cannot be changed</div>
+
+
+                              <label for="username" class="form-label">Post Title:</label>
+                              <input type="text" name="newPostTitle" class="form-control required" id="InputUser">
+                                Type your post here:
+                              <textarea name="newPostBody" rows="5" cols="61"  class="form-control required" id="InputBreak" value="Account_Break"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="submit" name="submit" class="btn btn-primary">Create Post</button>
+                        </div>
+                      </div>
+                    </form>
+
+
+                    </div>
                   </div>
-                </div>
+
+
+                <?php
+                  $stmt = mysqli_stmt_init($conn);
+                  $sql = "SELECT * FROM POST ORDER BY created_at DESC";
+                  if (!mysqli_stmt_prepare($stmt, $sql)){
+                    header("location: ../home.php?error=stmtFailed");
+                  }
+                  mysqli_stmt_execute($stmt);
+
+                  $result = mysqli_stmt_get_result($stmt);
+                  if($result->num_rows > 0){
+                    while($row = $result->fetch_assoc()) {
+                      echo '<div class="row border-beige1">';
+                      echo '<div class="row">';
+                      echo '<div class="col-10">';
+                      echo  '<h3 class="display-7 text-left"><u><a href="post.php?postId='.$row['post_id'].'&postTitle='.$row['title'].'">'.$row['title'].'</a></u></h3>';
+                      echo  '<p>user no.'.$row['user_id'].'</p>';
+                      echo '<div class="col-2">';
+                      echo '<a href="#">edit</a>';
+                      echo '<a href="#">delete</a>';
+                      echo '</div>';
+                      echo '</div>';
+                      echo '</div>';
+                      echo '<div class="row">';
+                      echo '<p>';
+
+                        echo $row['body'];
+
+                      echo    '</p>';
+                      echo  '</div>';
+                      echo '</div>';
+                    }
+                }else {
+                  echo "No posts found";
+                }
+                  
+                  mysqli_stmt_close($stmt);
+                ?>
 
                 
 
