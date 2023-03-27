@@ -162,3 +162,15 @@ function emptyPostInput($categoryId,$categoryName,$newPostTitle,$newPostBody) {
     }
     return $result;
 }
+
+//delete
+function delete ($conn, $sql, $deleteId){
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../post.php?error=stmtFailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, "s", $deleteId);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+}
