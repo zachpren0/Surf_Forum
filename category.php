@@ -43,7 +43,7 @@ if(isset($_GET['catId'])) {
               include_once 'categoryList.php';
             ?>
 
-
+                
                 <div class="col-9 gx-5">
                   <div class="row bg-beige1 rounded-top p-1">
                     <div class="col-2">

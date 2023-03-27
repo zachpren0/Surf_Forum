@@ -76,13 +76,13 @@ if(isset($_GET['postId'])) {
                       echo '<p>User no.'.$row['user_id'].'</p>';
                       echo '</div>';
                     echo '<div class="col-2">';
-                          debug_to_console($_SESSION["userid"]);
-                          debug_to_console($row["user_id"]);
+                          //debug_to_console($_SESSION["userid"]);
+                          //debug_to_console($row["user_id"]);
                       if (isset($_SESSION["userid"])) {
                         if ($_SESSION["userid"] === $row['user_id'] || isset($_SESSION["admin"]) ){
                           
                     echo '<a href="#">edit</a>';
-                      echo '<a href="#">delete</a>';
+                    echo '<a href="includes/delete.inc.php?post_id='.$row['post_id'].'">delete</a>'; 
                         }
                     }
                       echo '</div>';
@@ -103,6 +103,8 @@ if(isset($_GET['postId'])) {
                   
                   mysqli_stmt_close($stmt);
                 ?>
+
+                    
 
                 <!-- create new comment modal-->
                 <div class="modal fade" id="makeComment" tabindex="-1" aria-labelledby="profile" aria-hidden="true">
@@ -165,8 +167,8 @@ if(isset($_GET['postId'])) {
                       echo '<div class="col-2">';
                       if (isset($_SESSION["userid"])) {
                         if ($_SESSION["userid"] === $row['user_id'] || isset($_SESSION["admin"]) ){
-                    echo '<a href="#">edit</a>';
-                      echo '<a href="#">delete</a>';
+                      echo '<a href="#">edit</a>';
+                      echo '<a href="includes/delete.inc.php?comment_id='.$row['comment_id'].'">delete</a>';
                         }
                     }
                       echo  '</div>';
