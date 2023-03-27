@@ -25,14 +25,26 @@ include_once 'header.php';
                               <input type="text" name="username" class="form-control required" id="InputUser" placeholder='Username / Email'>
                             </div>
                             <div class="mb-5">
-                              <label for="pwd" class="form-label">Password</label>
-                              <input type="password" user="pwd" class="form-control required" id="pass1">
+                              <label for="password" class="form-label">Password test</label>
+                              <input type="password" name="password" class="form-control required">
                             </div>
                             <div class="mb-5 text-center d-grid gap-2 col-12 mx-auto">
                             <button type="submit" name="submit" class="btn bg-blue">Login</button>
                               <a href="https://en.wikipedia.org/wiki/Hippopotamus">I (grom) forgot my password</a>
                             </div>
                           </form>
+                          <?php
+                            if(isset($_GET["error"])){
+                              if ($_GET["error"]== "emptyInput"){
+                                echo "<p>Missing Fields</p>";
+                            } 
+                            else if ($_GET["error"]== "wrongLogin"){
+                              echo "<p>Username or password is incorrect</p>";
+                            }
+                            
+                          }
+
+                          ?>
 
                     </div>
             </div>

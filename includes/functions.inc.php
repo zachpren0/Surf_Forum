@@ -1,7 +1,5 @@
 <?php
-  //we left off at
-    //https://www.youtube.com/watch?v=gCo6JqGMi30&list=PL0eyrZgxdwhyfSPF6sHd7Ibm3R0THoOJd&index=3
-    //
+  
 
     function debug_to_console($data) {
         $output = $data;
@@ -103,10 +101,11 @@ function createUser($conn,$email,$username,$password){
 
 
 //login functions
-function emptySignupInput($username,$password) {
+function emptyLoginInput($username,$password) {
     $result;
 
-    
+    debug_to_console($username);
+    debug_to_console($password);
 
     if ( empty($username) || empty($password)  ){
         $result = true;

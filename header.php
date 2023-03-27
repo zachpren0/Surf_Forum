@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -24,9 +28,16 @@
 
                   <div class="col-2 d-flex align-items-end justify-content-end">
                     <nav class="nav">
-                      <a class="nav-link text-black" href="signup.php">Signup</a>
-                      <a class="nav-link text-black" href="login.php">Login</a>
-                      <a class="nav-link text-black" href="admin.php">Admin</a>
+                      <?php 
+                        if (isset($_SESSION["userid"])){
+                          echo "<a class='nav-link text-black' href='account.php'>Profile</a>";
+                          echo "<a class='nav-link text-black' href='includes/logout.inc.php'>Logout</a>";
+                        } else {
+                          echo "<a class='nav-link text-black' href='signup.php'>Signup</a>";
+                          echo "<a class='nav-link text-black' href='login.php'>Login</a>";
+                          echo "<a class='nav-link text-black' href='admin.php'>Admin</a>";
+                        }
+                        ?>
                     </nav>
 
                 </div>
