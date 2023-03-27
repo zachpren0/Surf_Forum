@@ -162,3 +162,15 @@ function emptyPostInput($categoryId,$categoryName,$newPostTitle,$newPostBody) {
     }
     return $result;
 }
+
+//comment creation
+function emptyCommentInput($postId,$postName,$newCommentBody) {
+    $result;
+    if ( empty($postId) || empty($postName) || empty($newCommentBody) ){
+        $result = true;
+    }
+    else{
+        $result = false;
+    }
+    return $result;
+}

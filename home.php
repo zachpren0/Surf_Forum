@@ -31,7 +31,7 @@ include_once 'header.php';
                 <div class="col-9 gx-5">
                   <div class="row bg-beige1 rounded-top p-1">
                     <div class="col-2">
-                    <button type="button" class="btn bg-blue d-inline" data-bs-toggle="modal" data-bs-target="#makePost">Create new post</button>
+                    <?php if(isset($_SESSION['userid'])){echo '<button type="button" class="btn bg-blue d-inline" data-bs-toggle="modal" data-bs-target="#makePost">Create new post</button>';} ?>  
                   </div>
                   <div class="col-10">
                     <h3 class="display-7 text-center"> Recent</h3>
@@ -45,7 +45,7 @@ include_once 'header.php';
                       <div class="modal-content">
 
 
-                        <form method="post" id="commentForm" action="includes/comment.inc.php">
+                        <form method="post" id="commentForm" action="includes/post.inc.php">
                         <div class="modal-header">
                           <h5 class="modal-title" id="changeProfileHeading">Profile</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -60,7 +60,7 @@ include_once 'header.php';
                               <div id="userHelp" class="form-text">This cannot be changed</div>
 
                               <label for="userId" class="form-label">User ID</label>
-                              <input type="text" name="userId" class="form-control required" id="userId" value="1" readonly>
+                              <input type="text" name="userId" class="form-control required" id="userId" value="<?php if (isset($_SESSION['userid'])){echo $_SESSION['userid'];} ?>" readonly>
                               <div id="userHelp" class="form-text">This is determined by your login credentials and cannot be changed</div>
 
 
