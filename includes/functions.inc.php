@@ -173,6 +173,7 @@ function delete ($conn, $sql, $deleteId){
     mysqli_stmt_bind_param($stmt, "s", $deleteId);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
+}
 //comment creation
 function emptyCommentInput($postId,$postName,$newCommentBody) {
     $result;
@@ -183,4 +184,22 @@ function emptyCommentInput($postId,$postName,$newCommentBody) {
         $result = false;
     }
     return $result;
+}
+
+function fetchUserById($conn, $userId) {
+    $stmt = mysqli_stmt_init($conn);
+    $sql = "SELECT * FROM `USER` WHERE id=?";
+    if (!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../account.php?error=stmtFailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, "s", $userId);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    if(mysqli_num_rows($result) > 1) {
+        die("database error, too many return values" . mysqli_connect_error());
+    }
+    $row = $result->fetch_assoc();
+    mysqli_stmt_close($stmt);
+    return $row;
 }

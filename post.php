@@ -73,7 +73,7 @@ if(isset($_GET['postId'])) {
                       echo '<div class="row">';
                   echo '<div class="col-10">';
                     echo '<h3 class="display-7 text-left"><u><a href="#">'.$row['title'].'</a></u></h3>';
-                      echo '<p>User no.'.$row['user_id'].'</p>';
+                      echo '<p>'.fetchUserById($conn, $row['user_id'])['username'].'</p>';
                       echo '</div>';
                     echo '<div class="col-2">';
                           //debug_to_console($_SESSION["userid"]);
