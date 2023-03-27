@@ -1,7 +1,5 @@
 <?php
-  //we left off at
-    //https://www.youtube.com/watch?v=gCo6JqGMi30&list=PL0eyrZgxdwhyfSPF6sHd7Ibm3R0THoOJd&index=3
-    //
+  
 
     function debug_to_console($data) {
         $output = $data;
@@ -103,11 +101,11 @@ function createUser($conn,$email,$username,$password){
 
 
 //login functions
-/*
-function emptySignupInput($username,$password) {
+function emptyLoginInput($username,$password) {
     $result;
 
-    
+    debug_to_console($username);
+    debug_to_console($password);
 
     if ( empty($username) || empty($password)  ){
         $result = true;
@@ -117,7 +115,7 @@ function emptySignupInput($username,$password) {
     }
     return $result;
 }
-*/
+
 function loginUser($conn,$username,$password){
 
     $uidExists = uidExists($conn, $username, $username);
@@ -138,8 +136,16 @@ function loginUser($conn,$username,$password){
         session_start();
         $_SESSION["userid"] = $uidExists["id"];
         $_SESSION["username"] = $uidExists["username"];
-        header("location: ../home.php");
-        exit();
+        
+       if ($uidExists["is_admin"] !== 1){
+            header("location: ../home.php");
+            exit();
+        }
+        else{
+            $_SESSION["admin"] = $uidExists["is_admin"];
+            header("location: ../home.php");
+            exit();
+        }
     }
 
 
