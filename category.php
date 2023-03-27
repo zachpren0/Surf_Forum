@@ -66,7 +66,6 @@ if(isset($_GET['catId'])) {
                   mysqli_stmt_execute($stmt);
 
                   $result = mysqli_stmt_get_result($stmt);
-                  debug_to_console($result->num_rows);
                   if($result->num_rows > 0){
                     while($row = $result->fetch_assoc()) {
                       echo '<div class="row border-beige1">';
