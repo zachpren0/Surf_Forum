@@ -144,3 +144,15 @@ function loginUser($conn,$username,$password){
 
 
 }
+
+//post creation
+function emptyPostInput($categoryId,$categoryName,$newPostTitle,$newPostBody) {
+    $result;
+    if ( empty($categoryId) || empty($categoryName) || empty($newPostTitle) || empty($newPostBody) ){
+        $result = true;
+    }
+    else{
+        $result = false;
+    }
+    return $result;
+}

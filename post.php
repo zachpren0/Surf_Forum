@@ -101,7 +101,7 @@ if(isset($_GET['postId'])) {
                 <div class="modal fade" id="makeComment" tabindex="-1" aria-labelledby="profile" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
-                        <form method="get" id="commentForm" action="http://www.randyconnolly.com/tests/process.php">
+                        <form method="post" id="commentForm" action="http://www.randyconnolly.com/tests/process.php">
                         <div class="modal-header">
                           <h5 class="modal-title" id="changeProfileHeading">Profile</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
