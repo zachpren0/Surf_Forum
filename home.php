@@ -1,39 +1,11 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <!-- bootstrap 5.2 styles -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Test if this changes</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/custom.css">
-    
-  </head>
-  <body>
-      <header>
-            <div class="container-fluid bg-blue">
-              <div class="row d-flex">
-              
-                  <div class="col-2">
-                    <img src="images/logo.png" class="rounded float-start img-fluid" alt="logo">
-                  </div>
-
-                  <div class="col-6 d-flex align-items-center justify-content-center offset-1">
-                    <h1 class="display-4"><a class="nav-link" href="home.html">Surf - Forum</a></h1>
-                  </div>
-
-                  <div class="col-2 d-flex align-items-end justify-content-end">
-                    <nav class="nav">
-                      <a class="nav-link text-black" href="signup.html">Signup</a>
-                      <a class="nav-link text-black" href="login.html">Login</a>
-                      <a class="nav-link text-black" href="admin.html">Admin</a>
-                    </nav>
-
-                </div>
-              </div>
-        </header>
+<?php
+include_once 'header.php';
+?>
 
         <main>
+           <?php  // add some php to load the breadcrumb bar 
+        
+            ?>
           <div class="container-fluid">
             <div class="row top-buffer">
               <div class="col-9 rounded bg-beige1">
@@ -43,6 +15,11 @@
                       </ol>
                   </nav>
               </div>
+              <!--END BREADCRUMB-->
+
+              <?php  // add some php to deal with search querry
+        
+              ?>
               <div class="col-3">
                 <div class="input-group">
                   <input type="search" class="form-control rounded-left" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
@@ -51,24 +28,23 @@
               </div>
             </div>
           </div>
+          <!--END SEARCH-->
 
+          <!--MAIN CONTAINER-->
       <div class="container-fluid">
             <div class="row top-buffer">
-              <div class="col-3 gx-5">
-                <div class="row bg-beige1 rounded-top">
-                  <h3 class="display-7 text-center">Categories</h1>
-                </div>
-                <div class="row bg-beige3 rounded-bottom min-vh-100">
-                  <ul class="nav flex-column">
 
-                    <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="category.html">SurfSpots</a>
-                    </li>
+            <!--left container-->
+            <?php
+              include_once 'categoryList.php';
+            ?>
+              <!-- end left contatiner-->
 
-                  </ul>
-                </div>
-              </div>
+                <!-- post container  -->
+
                 <div class="col-9 gx-5">
+
+                  <!--post container header -->
                   <div class="row bg-beige1 rounded-top p-1">
                     <div class="col-2">
                     <button type="button" class="btn bg-blue d-inline">Create new post</button>
@@ -79,10 +55,12 @@
                   </div>
                 </div>
 
+
+
                 <div class="row border-beige1">
                   <div class="row">
                     <div class="col-10">
-                      <h3 class="display-7 text-left"><u><a href="post.html"> Post_Name </a></u></h3>
+                      <h3 class="display-7 text-left"><u><a href="post.php"> Post_Name </a></u></h3>
                       <p>surfBum69</p>
                     </div>
                     <!-- admin tools
@@ -110,7 +88,7 @@
                 <div class="row border-beige1">
                   <div class="row">
                     <div class="col-10">
-                      <h3 class="display-7 text-left"><u><a href="post.html"> Post_Name_2 </a></u></h3>
+                      <h3 class="display-7 text-left"><u><a href="post.php"> Post_Name_2 </a></u></h3>
                       <p>surfBum44</p>
                     </div>
                     <!-- admin tools
@@ -143,10 +121,6 @@
         </div>
         </main>
 
-        <footer>
-          <!-- empty so far -->
-        </footer>
-        <!-- bootstrap js stuff -->
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    </body>
-</html>
+        <?php
+include_once 'footer.php';
+?>
