@@ -36,7 +36,7 @@ include_once 'header.php';
 
             <!--left container-->
             <?php
-              include_once 'catContainer.php';
+              include_once 'categoryList.php';
             ?>
               <!-- end left contatiner-->
 
