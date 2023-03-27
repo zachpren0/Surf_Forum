@@ -135,8 +135,16 @@ function loginUser($conn,$username,$password){
         session_start();
         $_SESSION["userid"] = $uidExists["id"];
         $_SESSION["username"] = $uidExists["username"];
-        header("location: ../home.php");
-        exit();
+        
+       if ($uidExists["is_admin"] !== 1){
+            header("location: ../home.php");
+            exit();
+        }
+        else{
+            $_SESSION["admin"] = $uidExists["is_admin"];
+            header("location: ../home.php");
+            exit();
+        }
     }
 
 

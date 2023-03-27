@@ -24,6 +24,11 @@ session_start();
 
                   <div class="col-6 d-flex align-items-center justify-content-center offset-1">
                     <h1 class="display-4"><a class="nav-link" href="home.php">Surf - Forum</a></h1>
+                    <?php 
+                        if (isset($_SESSION["admin"])){
+                          echo "<p>Logged in as Administrator</p>";
+                        } 
+                        ?>
                   </div>
 
                   <div class="col-2 d-flex align-items-end justify-content-end">
@@ -32,6 +37,7 @@ session_start();
                         if (isset($_SESSION["userid"])){
                           echo "<a class='nav-link text-black' href='account.php'>Profile</a>";
                           echo "<a class='nav-link text-black' href='includes/logout.inc.php'>Logout</a>";
+                          
                         } else {
                           echo "<a class='nav-link text-black' href='signup.php'>Signup</a>";
                           echo "<a class='nav-link text-black' href='login.php'>Login</a>";
