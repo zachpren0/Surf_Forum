@@ -6,7 +6,6 @@ error_reporting(E_ALL);
 
 if (isset($_POST["submit"])){
     $profileId = $_POST['profileId'];
-    $isEnabled = $_POST['isEnabled'];
     $newState = $_POST['isEnabled']? 0 : 1 ;
 
     require_once 'db.inc.php';
