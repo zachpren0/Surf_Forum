@@ -21,7 +21,7 @@ if ($result->num_rows > 0) {
 // output data of each row
 while($row = $result->fetch_assoc()) {
     echo '<li class="nav-item">';
-    echo '<a class="nav-link active" aria-current="page" href="category.php?title='.$row['title'].'&catId='.$row['category_id'].'">'.$row['title'].'</a>';
+    echo '<a class="nav-link active" aria-current="page" href="route/category.route.php?title='.$row['title'].'&catId='.$row['category_id'].'">'.$row['title'].'</a>';
     echo '</li>';
 }
 } else {
