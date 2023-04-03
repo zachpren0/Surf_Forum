@@ -7,10 +7,13 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$userId = 'none';
 if(isset($_GET['id'])) {
   $userId = $_GET['id'];
   $userProfile = fetchUserById($conn, $userId);
+}
+if(!isset($userProfile) || !isset($userId)) {
+  echo "<p> profile does not exist </p>";
+  exit();
 }
 ?>
 
@@ -83,7 +86,10 @@ if(isset($_GET['id'])) {
             <div class="d-grid col">
               <?php
               if (isset($_SESSION['userid']) && strcmp($userId, $_SESSION['userid']) === 0) {
-                echo '<button class="btn bg-blue">delete user</button>';
+                echo '<form method="post" action="includes/deleteProfile.inc.php" class="text-center d-grid col-12">';
+                echo '<button type="submit" name="submit" class="btn bg-blue">delete user</button>';
+                echo '<input type="hidden" id="profileId" name="profileId" value="'.$userId.'">';
+                echo '</form>';
               }
               ?>
             </div>
@@ -93,8 +99,12 @@ if(isset($_GET['id'])) {
           <div class="row bg-beige3 p-4">
             <div class="d-grid col">
               <?php
-              if (isset($_SESSION['userid']) && $userProfile['is_admin']) {
-                echo '<button class="btn bg-blue">disable account</button>';
+              if (isset($_SESSION['admin']) && $_SESSION['admin']) {
+                echo '<form method="post" action="includes/disableProfile.inc.php" class="text-center d-grid col-12">';
+                echo '<button type="submit" name="submit" class="btn bg-blue">'.'Enable/Disable account'.'</button>';
+                echo '<input type="hidden" id="profileId" name="profileId" value="'.$userId.'">';
+                echo '<input type="hidden" id="isEnabled" name="isEnabled" value="'.$userProfile['is_enabled'].'">';
+                echo '</form>';
               }
               ?>
             </div>
