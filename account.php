@@ -120,13 +120,19 @@ if(!isset($userProfile) || !isset($userId)) {
                 <h5 class="modal-title" id="changePPicHeading">Profile Picture</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <div class="modal-body">
-                Upload picture here
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
+              <form method="post" action="includes/changePPic.inc.php">
+                <div class="modal-body">
+                  Upload picture here
+                    
+                    File Upload:<br>
+                    <input type="file" name="fileToUpload" id="fileToUpload">
+                    <input type="hidden" id="profileId" name="profileId" value="<?php echo $userId; ?>">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
