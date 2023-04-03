@@ -119,7 +119,7 @@ if(isset($_SESSION['catId'])) {
                             if (isset($_SESSION["userid"])) {
                             if ($_SESSION["userid"] === $row['user_id'] || isset($_SESSION["admin"]) ){
                               echo '<button type="button" class="btn bg-blue d-inline " data-bs-toggle="modal" data-bs-target="#">edit</button>';
-                              echo '<button type="button" class="btn bg-blue d-inline " data-bs-toggle="modal" data-bs-target="#"><a style="text-decoration: none; color: black;"   href="includes/delete.inc.php?post_id='.$row['post_id'].'">delete</a></button>'; 
+                              echo '<button type="button" class="btn bg-blue d-inline " data-bs-toggle="modal" data-bs-target="#"><a style="text-decoration: none; color: black;" href="includes/deletePost.inc.php?post_id='.$row['post_id'].'">delete</a></button>'; 
                             }
                             }
                             
