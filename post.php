@@ -224,7 +224,7 @@ if(isset($_SESSION['postId'])) {
                         </div>
                         <div class="modal-body">
                               <label for="postId" class="form-label">Post ID</label>
-                              <input type="text" name="postId" class="form-control required" id="postId" value="<?php echo $postId ?>" readonly>
+                              <input type="text" name="postId" class="form-control required" id="postId" value="data-comment_id" readonly>
                               <div id="userHelp" class="form-text">This cannot be changed</div>
 
                               <label for="username" class="form-label">Post Name</label>
