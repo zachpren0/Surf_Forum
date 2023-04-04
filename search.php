@@ -15,6 +15,11 @@ if(isset($_SESSION['catTitle'])) {
 if(isset($_SESSION['catId'])) {
   $categoryId = $_SESSION['catId'];
 }
+if(isset($_POST['search'])) {
+  $searchString = $_POST['search'];
+} else {
+    die("no search string");
+}
 ?>
 
         <main>
@@ -29,12 +34,12 @@ if(isset($_SESSION['catId'])) {
                     </nav>
                 </div>
                     <div class="col-3">
-                    <div class="input-group">
-                          <form action="search.php" method="post">
-                            <input type="search" name="search" class="form-control rounded-left" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                            <button type="submit" name="submit" class="btn bg-blue text-black">search</button>
-                          </form>  
-                      </div>
+                            <div class="input-group">
+                                <form action="search.php" method="post">
+                                    <input type="search" name="search" class="form-control rounded-left" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                                    <button type="submit" name="submit" class="btn bg-blue text-black">search</button>
+                                </form>  
+                            </div>
                     </div>
           </div>
       </div>
@@ -48,11 +53,8 @@ if(isset($_SESSION['catId'])) {
                 
                 <div class="col-9 gx-5">
                   <div class="row bg-beige1 rounded-top p-1">
-                    <div class="col-2">
-                    <?php if(isset($_SESSION['userid'])){echo '<button type="button" class="btn bg-blue d-inline" data-bs-toggle="modal" data-bs-target="#makePost">Create new post</button>';} ?>
-                  </div>
                   <div class="col-10">
-                    <h3 class="display-7 text-center"><?php echo $categoryTitle; ?></h3>
+                    <h3 class="display-7 text-center"> Search results for: <?php echo $searchString; ?></h3>
                     
                   </div>
                 </div>
@@ -100,12 +102,13 @@ if(isset($_SESSION['catId'])) {
 
 
                 <?php
+                  $searchString = "%".$searchString."%";
                   $stmt = mysqli_stmt_init($conn);
-                  $sql = "SELECT * FROM POST WHERE category_id=?;";
+                  $sql = "SELECT * FROM POST WHERE body LIKE ?;";
                   if (!mysqli_stmt_prepare($stmt, $sql)){
                     header("location: ../category.php?error=stmtFailed");
                   }
-                  mysqli_stmt_bind_param($stmt, "s", $categoryId);
+                  mysqli_stmt_bind_param($stmt, "s", $searchString);
                   mysqli_stmt_execute($stmt);
 
                   $result = mysqli_stmt_get_result($stmt);
