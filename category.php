@@ -113,7 +113,7 @@ if(isset($_SESSION['catId'])) {
                         echo '<div class="row">';
                           echo '<div class="col-10">';
                             echo  '<h3 class="display-7 text-left"><u><a href="route/post.route.php?postId='.$row['post_id'].'&postTitle='.$row['title'].'">'.$row['title'].'</a></u></h3>';
-                            echo  '<p>'.fetchUserById($conn, $row['user_id'])['username'].'</p>';
+                            echo  '<p><a href="account.php?id='.$row['user_id'].'">'.fetchUserById($conn, $row['user_id'])['username'].'</a></p>';
                          
                           echo '<div class="col-2">';
                             if (isset($_SESSION["userid"])) {

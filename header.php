@@ -35,9 +35,8 @@ session_start();
                     <nav class="nav">
                       <?php 
                         if (isset($_SESSION["userid"])){
-                          echo "<a class='nav-link text-black' href='account.php'>Profile</a>";
+                          echo "<a class='nav-link text-black' href='account.php?id=".$_SESSION["userid"]."'>Profile</a>";
                           echo "<a class='nav-link text-black' href='includes/logout.inc.php'>Logout</a>";
-                          
                         } else {
                           echo "<a class='nav-link text-black' href='signup.php'>Signup</a>";
                           echo "<a class='nav-link text-black' href='login.php'>Login</a>";

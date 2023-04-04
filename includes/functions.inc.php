@@ -186,6 +186,17 @@ function emptyCommentInput($postId,$postName,$newCommentBody) {
     return $result;
 }
 
+function emptyProfileChangeInput($userId,$sStyle,$sSpot,$break) {
+    $result;
+    if ( empty($userId) || empty($sStyle) || empty($sSpot) || empty($break) ){
+        $result = true;
+    }
+    else{
+        $result = false;
+    }
+    return $result;
+}
+
 function fetchUserById($conn, $userId) {
     $stmt = mysqli_stmt_init($conn);
     $sql = "SELECT * FROM `USER` WHERE id=?";
