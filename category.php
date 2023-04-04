@@ -9,11 +9,11 @@ error_reporting(E_ALL);
 
 $categoryTitle = "none";
 $categoryId = "none";
-if(isset($_GET['title'])) {
-  $categoryTitle = $_GET['title'];
+if(isset($_SESSION['catTitle'])) {
+  $categoryTitle = $_SESSION['catTitle'];
 }
-if(isset($_GET['catId'])) {
-  $categoryId = $_GET['catId'];
+if(isset($_SESSION['catId'])) {
+  $categoryId = $_SESSION['catId'];
 }
 ?>
 
@@ -110,16 +110,23 @@ if(isset($_GET['catId'])) {
                   if($result->num_rows > 0){
                     while($row = $result->fetch_assoc()) {
                       echo '<div class="row border-beige1">';
-                      echo '<div class="row">';
-                      echo '<div class="col-10">';
-                      echo  '<h3 class="display-7 text-left"><u><a href="post.php?postId='.$row['post_id'].'&postTitle='.$row['title'].'">'.$row['title'].'</a></u></h3>';
-                      echo  '<p><a href="account.php?id='.$row['user_id'].'">'.fetchUserById($conn, $row['user_id'])['username'].'</a></p>';
-                      echo '<div class="col-2">';
-                      echo '<a href="#">edit</a>';
-                      echo '<a href="#">delete</a>';
+                        echo '<div class="row">';
+                          echo '<div class="col-10">';
+                            echo  '<h3 class="display-7 text-left"><u><a href="route/post.route.php?postId='.$row['post_id'].'&postTitle='.$row['title'].'">'.$row['title'].'</a></u></h3>';
+                            echo  '<p><a href="account.php?id='.$row['user_id'].'">'.fetchUserById($conn, $row['user_id'])['username'].'</a></p>';
+                         
+                          echo '<div class="col-2">';
+                            if (isset($_SESSION["userid"])) {
+                            if ($_SESSION["userid"] === $row['user_id'] || isset($_SESSION["admin"]) ){
+                              echo '<button type="button" class="btn bg-blue d-inline " data-bs-toggle="modal" data-bs-target="#">edit</button>';
+                              echo '<button type="button" class="btn bg-blue d-inline " data-bs-toggle="modal" data-bs-target="#"><a style="text-decoration: none; color: black;" href="includes/deletePost.inc.php?post_id='.$row['post_id'].'">delete</a></button>'; 
+                            }
+                            }
+                            
+                          echo '</div>';
+                        echo '</div>';
                       echo '</div>';
-                      echo '</div>';
-                      echo '</div>';
+
                       echo '<div class="row">';
                       echo '<p>';
 

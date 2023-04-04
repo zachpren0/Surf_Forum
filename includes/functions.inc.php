@@ -214,3 +214,21 @@ function fetchUserById($conn, $userId) {
     mysqli_stmt_close($stmt);
     return $row;
 }
+
+function getCategoryTitle($postId, $conn) {
+    // Prepare a SQL query to fetch the category title for the given post ID
+    $query = "SELECT c.title FROM CATEGORY c INNER JOIN POST p ON c.category_id = p.category_id WHERE p.post_id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param('i', $postId);
+    
+    // Execute the query and fetch the result
+    $stmt->execute();
+    $stmt->bind_result($categoryTitle);
+    $stmt->fetch();
+
+   
+    $_SESSION['catTitle'] = $categoryTitle;
+    
+    // Return the category title
+    return $categoryTitle;
+  }

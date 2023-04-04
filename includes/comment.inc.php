@@ -16,12 +16,7 @@ if (isset($_POST["submit"])){
 
     
     
-    /*
-    if (emptyCommentInput($postId,$postTitle,$newCommentBody) !== false) {
-        header("location: ../post.php?error=emptyInput");
-        exit();
-    }
-    */
+    
    
     $stmt = mysqli_stmt_init($conn);
     $sql = "INSERT INTO `db_10967677`.`COMMENT` (`user_id`, `comment_id`, `discussion_id`, `body`, `created_at`, `updated_at`) VALUES (?, NULL, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);";
