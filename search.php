@@ -60,55 +60,17 @@ if(isset($_POST['search'])) {
                 </div>
 
 
-                <div class="modal fade" id="makePost" tabindex="-1" aria-labelledby="profile" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-
-
-                        <form method="post" id="commentForm" action="includes/post.inc.php">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="changeProfileHeading">Profile</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                              <label for="categoryId" class="form-label">Category ID</label>
-                              <input type="text" name="categoryId" class="form-control required" id="categoryId" value="<?php echo $categoryId ?>" readonly>
-                              <div id="userHelp" class="form-text">This cannot be changed</div>
-
-                              <label for="username" class="form-label">Category Name</label>
-                              <input type="text" name="categoryName" class="form-control required" id="categoryName" value="<?php echo $categoryTitle ?>" readonly>
-                              <div id="userHelp" class="form-text">This cannot be changed</div>
-
-                              <label for="userId" class="form-label">User ID</label>
-                              <input type="text" name="userId" class="form-control required" id="userId" value="<?php if (isset($_SESSION['userid'])){echo $_SESSION['userid'];} ?>" readonly>
-                              <div id="userHelp" class="form-text">This is determined by your login credentials and cannot be changed</div>
-
-
-                              <label for="username" class="form-label">Post Title:</label>
-                              <input type="text" name="newPostTitle" class="form-control required" id="InputUser">
-                                Type your post here:
-                              <textarea name="newPostBody" rows="5" cols="61"  class="form-control required" id="InputBreak" value="Account_Break"></textarea>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="submit" name="submit" class="btn btn-primary">Create Post</button>
-                        </div>
-                      </div>
-                    </form>
-
-
-                    </div>
-                  </div>
+                
 
 
                 <?php
                   $searchString = "%".$searchString."%";
                   $stmt = mysqli_stmt_init($conn);
-                  $sql = "SELECT * FROM POST WHERE body LIKE ?;";
+                  $sql = "SELECT * FROM POST WHERE body LIKE ? OR title LIKE ?;";
                   if (!mysqli_stmt_prepare($stmt, $sql)){
                     header("location: ../category.php?error=stmtFailed");
                   }
-                  mysqli_stmt_bind_param($stmt, "s", $searchString);
+                  mysqli_stmt_bind_param($stmt, "ss", $searchString, $searchString);
                   mysqli_stmt_execute($stmt);
 
                   $result = mysqli_stmt_get_result($stmt);
