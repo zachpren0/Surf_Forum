@@ -125,6 +125,11 @@ function loginUser($conn,$username,$password){
         exit();
     }
 
+    if (!$uidExists['is_enabled']) {
+        header("location: ../login.php?error=disabled");
+        exit();
+    }
+
     $passwordHashed = $uidExists["password_hash"];
 
     $checkPassword = password_verify($password,$passwordHashed);
