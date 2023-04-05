@@ -9,22 +9,47 @@ error_reporting(E_ALL);
 
 $postTitle = "none";
 $postId = "none";
+$postBody = 'load issue';
+
+
 
 
 
 
 if(isset($_SESSION['postTitle'])) {
   $postTitle = $_SESSION['postTitle'];
-  debug_to_console($postTitle);
+  //debug_to_console($postTitle);
 }
 if(isset($_SESSION['postId'])) {
   $postId = $_SESSION['postId'];
   $catTitle = getCategoryTitle($postId, $conn);
+  $postBody = getPostBody($postId, $conn);
+  //debug_to_console($postBody);
 }
 
 
 ?>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script>
+   $(document).ready(function() {
+   $('.edit-comment-btn').click(function() {
+   var commentId = $(this).data('comment-id');
+   var commentBody =$(this).data('comment-body');
+   $('#editCommentId').val(commentId);
+   $('#editCommentBody').val(commentBody); });
+
+  });
+
+  $(document).ready(function() {
+  $('.edit-post-btn').click(function() {
+    var postBody = $(this).data('post-body');
+    $('#editPostBody').val(postBody);
+  });
+});
+
+  
+</script>
         <main>
           <div class="container-fluid">
             <div class="row top-buffer">
@@ -84,8 +109,8 @@ if(isset($_SESSION['postId'])) {
                       echo '<div class="row border-beige1">';
                       echo '<div class="row">';
                   echo '<div class="col-10">';
-                    echo '<h3 class="display-7 text-left"><u><a href="#">'.$row['title'].'</a></u></h3>';
-                      echo '<p><a href="account.php?id='.$row['user_id'].'">'.fetchUserById($conn, $row['user_id'])['username'].'</a></p>';
+                    echo '<h3 class="display-7 text-left">'.$row['title'].'</h3>';
+                      echo '<p>User: <a href="account.php?id='.$row['user_id'].'">'.fetchUserById($conn, $row['user_id'])['username'].'</a></p>';
                       echo '</div>';
                     echo '<div class="col-2">';
                           //debug_to_console($_SESSION["userid"]);
@@ -93,7 +118,8 @@ if(isset($_SESSION['postId'])) {
                       if (isset($_SESSION["userid"])) {
                         if ($_SESSION["userid"] === $row['user_id'] || isset($_SESSION["admin"]) ){
                           
-                    echo '<button type="button" class="btn bg-blue d-inline m-1" data-bs-toggle="modal" data-bs-target="#editPost">edit</button>';
+                    //echo '<button type="button" class="btn bg-blue d-inline m-1" data-bs-toggle="modal" data-bs-target="#editPost">edit</button>';
+                    echo '<button type="button" class="btn bg-blue d-inline m-1 edit-post-btn" data-bs-toggle="modal" data-bs-target="#editPost" data-post-body="'.$postBody.'">edit</button>';
                     echo '<button type="button" class="btn bg-blue d-inline m-1" data-bs-toggle="modal" data-bs-target="#"><a style="text-decoration: none; color: black;"   href="includes/delete.inc.php?post_id='.$row['post_id'].'">delete</a></button>'; 
                         }
                     }
@@ -158,22 +184,7 @@ if(isset($_SESSION['postId'])) {
                   <!-- comments -->
 
                   <!-- edit comment modal -->
-                  <script>
-                              // Get the edit button elements
-                          var editButtons = document.querySelectorAll('button[data-bs-toggle="modal"][data-bs-target="#editComment"]');
-
-                          // Add a click event listener to each edit button
-                          editButtons.forEach(function(button) {
-                          button.addEventListener('click', function(event) {
-                           // Get the comment ID from the data attribute
-                          var commentId = button.getAttribute('data-comment-id');
-
-                          // Set the comment ID as the value of the postId input element
-                          var postIdInput = document.querySelector('#editComment input[name="postId"]');
-                          postIdInput.value = commentId;
-                                      });
-            });
-              </script>
+                  
 
                   <div class="modal fade" id="editComment" tabindex="-1" aria-labelledby="profile" aria-hidden="true">
                     <div class="modal-dialog">
@@ -181,24 +192,25 @@ if(isset($_SESSION['postId'])) {
 
                       <form method="post" id="commentForm" action="includes/editComment.inc.php">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="changeProfileHeading">Profile</h5>
+                          <h5 class="modal-title" id="changeProfileHeading">Edit Comment</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                              <label for="postId" class="form-label">Comment ID</label>
+                              <div style="display: none;">
+                              <label for="editCommentID" class="form-label">Comment ID</label>
                               
-                              <input type="text" name="postId" class="form-control required" id="postId">
+                              <input type="text" name="editCommentID" class="form-control required" id="editCommentId" value="" readonly>
                               <div id="userHelp" class="form-text">This cannot be changed</div>
 
 
                               <label for="userId" class="form-label">User ID</label>
                               <input type="text" name="userId" class="form-control required" id="userId" value="<?php if (isset($_SESSION['userid'])){echo $_SESSION['userid'];} ?>" readonly>
                               <div id="userHelp" class="form-text">This is determined by your login credentials and cannot be changed</div>
-
+                              </div>
 
                               
-                                edit comment:
-                              <textarea name="newCommentBody" rows="5" cols="61"  class="form-control required" id="InputBreak" value="Account_Break"></textarea>
+    
+                              <textarea name="newCommentBody" rows="5" cols="61"  class="form-control required" id="editCommentBody" value=""></textarea>
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -217,17 +229,18 @@ if(isset($_SESSION['postId'])) {
                     <div class="modal-dialog">
                       <div class="modal-content">
 
-                      <form method="post" id="commentForm" action="includes/comment.inc.php">
+                      <form method="post" id="commentForm" action="includes/editPost.inc.php">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="changeProfileHeading">Profile</h5>
+                          <h5 class="modal-title" id="changeProfileHeading">Edit Post Contents</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                              <label for="postId" class="form-label">Post ID</label>
-                              <input type="text" name="postId" class="form-control required" id="postId" value="data-comment_id" readonly>
+                              <div style="display: none;">
+                              <label for="editPostId" class="form-label">Post ID</label>
+                              <input type="text" name="editPostId" class="form-control required" id="editPostId" value="<?php echo $postId ?>" readonly>
                               <div id="userHelp" class="form-text">This cannot be changed</div>
 
-                              <label for="username" class="form-label">Post Name</label>
+                              <label for="postTitle" class="form-label">Post Name</label>
                               <input type="text" name="postTitle" class="form-control required" id="postTitle" value="<?php echo $postTitle ?>" readonly>
                               <div id="userHelp" class="form-text">This cannot be changed</div>
 
@@ -237,8 +250,8 @@ if(isset($_SESSION['postId'])) {
 
 
                               
-                                Type your comment here:
-                              <textarea name="newCommentBody" rows="5" cols="61"  class="form-control required" id="InputBreak" value="Account_Break"></textarea>
+                             </div>
+                              <textarea name="editPostBody" rows="5" cols="61"  class="form-control required" id="editPostBody" value=""></textarea>
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -263,18 +276,23 @@ if(isset($_SESSION['postId'])) {
 
                   $result = mysqli_stmt_get_result($stmt);
                   //debug_to_console($result->num_rows);
+                  
+                  //edit comment array
+                  $comment_ids = array();
+                  $index = 0; 
+
                   if($result->num_rows > 0){
                     while($row = $result->fetch_assoc()) {
+
                       echo '<div class="row border-beige1">';
                       echo '<div class="row">';
                       echo '<div class="col-10">';
-                      echo '<p>user no.'.$row['user_id'].'</p>';
+                      echo '<p>User: <a href="account.php?id='.$row['user_id'].'">'.fetchUserById($conn, $row['user_id'])['username'].'</a></p>';
                       echo '</div>';
                       echo '<div class="col-2">';
                       if (isset($_SESSION["userid"])) {
                         if ($_SESSION["userid"] === $row['user_id'] || isset($_SESSION["admin"]) ){
-                      //echo '<button type="button" class="btn bg-blue d-inline m-1" data-bs-toggle="modal" data-bs-target="#editComment">edit</button>';
-                      echo '<button type="button" class="btn bg-blue d-inline m-1" data-bs-toggle="modal" data-bs-target="#editComment" data-comment-id="'.$row['comment_id'].'">edit</button>';
+                      echo '<button type="button" class="btn bg-blue d-inline m-1 edit-comment-btn" data-bs-toggle="modal" data-bs-target="#editComment" data-comment-id="'.$row['comment_id'].'" data-comment-body="'.$row['body'].'">edit</button>';
                       echo '<button type="button" class="btn bg-blue d-inline m-1" data-bs-toggle="modal" data-bs-target="#"><a style="text-decoration: none; color: black;"  href="includes/delete.inc.php?comment_id='.$row['comment_id'].'">delete</a></button>';
                         }
                     }

@@ -118,12 +118,14 @@ if(isset($_SESSION['catId'])) {
                             echo  '<p><a href="account.php?id='.$row['user_id'].'">'.fetchUserById($conn, $row['user_id'])['username'].'</a></p>';
                          
                           echo '<div class="col-2">';
+                          /*
                             if (isset($_SESSION["userid"])) {
                             if ($_SESSION["userid"] === $row['user_id'] || isset($_SESSION["admin"]) ){
                               echo '<button type="button" class="btn bg-blue d-inline " data-bs-toggle="modal" data-bs-target="#">edit</button>';
                               echo '<button type="button" class="btn bg-blue d-inline " data-bs-toggle="modal" data-bs-target="#"><a style="text-decoration: none; color: black;" href="includes/deletePost.inc.php?post_id='.$row['post_id'].'">delete</a></button>'; 
                             }
                             }
+                            */
                             
                           echo '</div>';
                         echo '</div>';

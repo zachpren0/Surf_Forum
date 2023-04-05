@@ -237,3 +237,19 @@ function getCategoryTitle($postId, $conn) {
     // Return the category title
     return $categoryTitle;
   }
+
+  function getPostBody($postId, $conn) {
+    // Prepare a SQL query
+    $query = "SELECT body FROM POST WHERE post_id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param('i', $postId);
+    
+    // Execute the query and fetch the result
+    $stmt->execute();
+    $stmt->bind_result($postBody);
+    $stmt->fetch();
+
+    
+    // Return
+    return $postBody;
+  }
