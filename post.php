@@ -151,10 +151,11 @@ if(isset($_SESSION['postId'])) {
 
                       <form method="post" id="commentForm" action="includes/comment.inc.php">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="changeProfileHeading">Profile</h5>
+                          <h5 class="modal-title" id="changeProfileHeading">Create New Comment</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
+                          <div style="display: none;">
                               <label for="postId" class="form-label">Post ID</label>
                               <input type="text" name="postId" class="form-control required" id="postId" value="<?php echo $postId ?>" readonly>
                               <div id="userHelp" class="form-text">This cannot be changed</div>
@@ -166,7 +167,7 @@ if(isset($_SESSION['postId'])) {
                               <label for="userId" class="form-label">User ID</label>
                               <input type="text" name="userId" class="form-control required" id="userId" value="<?php if (isset($_SESSION['userid'])){echo $_SESSION['userid'];} ?>" readonly>
                               <div id="userHelp" class="form-text">This is determined by your login credentials and cannot be changed</div>
-
+                            </div>
 
                               
                                 Type your comment here:
@@ -209,7 +210,7 @@ if(isset($_SESSION['postId'])) {
                               </div>
 
                               
-    
+                              Edit your comment here:
                               <textarea name="newCommentBody" rows="5" cols="61"  class="form-control required" id="editCommentBody" value=""></textarea>
                         </div>
                         <div class="modal-footer">
@@ -231,7 +232,7 @@ if(isset($_SESSION['postId'])) {
 
                       <form method="post" id="commentForm" action="includes/editPost.inc.php">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="changeProfileHeading">Edit Post Contents</h5>
+                          <h5 class="modal-title" id="changeProfileHeading">Edit Post</h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -251,6 +252,7 @@ if(isset($_SESSION['postId'])) {
 
                               
                              </div>
+                             Edit your post here:
                               <textarea name="editPostBody" rows="5" cols="61"  class="form-control required" id="editPostBody" value=""></textarea>
                         </div>
                         <div class="modal-footer">
