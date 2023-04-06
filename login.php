@@ -41,6 +41,9 @@ include_once 'header.php';
                             else if ($_GET["error"]== "wrongLogin"){
                               echo "<p>Username or password is incorrect</p>";
                             }
+                            else if ($_GET["error"]== "disabled"){
+                              echo "<p>Your account has been disabled, this action has pinged an admin to reassess your ban status";
+                            }
                             
                           }
 
