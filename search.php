@@ -36,8 +36,8 @@ if(isset($_POST['search'])) {
                     <div class="col-3">
                             <div class="input-group">
                                 <form action="search.php" method="post">
-                                    <input type="search" name="search" class="form-control rounded-left" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                                    <button type="submit" name="submit" class="btn bg-blue text-black">search</button>
+                                <input type="search" name="search" class="form-control rounded-left" placeholder="Search" aria-label="Search" aria-describedby="search-addon" style="float: left; width: 70%;" />
+                            <button type="submit" name="submit" class="btn bg-blue text-black" style="float: right;">search</button>
                                 </form>  
                             </div>
                     </div>
