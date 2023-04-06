@@ -20,7 +20,7 @@ if(!isset($userProfile) || !isset($userId)) {
         <main>
           <div class="container-fluid">
             <div class="row top-buffer">
-              <div class="col-9 rounded bg-beige1">
+              <div class="col-12 rounded bg-beige1">
                   <nav aria-label="breadcrumb">
                       <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="home.php">Home</a></li>
@@ -28,12 +28,7 @@ if(!isset($userProfile) || !isset($userId)) {
                       </ol>
                   </nav>
               </div>
-              <div class="col-3">
-                <div class="input-group">
-                  <input type="search" class="form-control rounded-left" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                  <button type="button" class="btn bg-blue text-black">search</button>
-                </div>
-              </div>
+              
             </div>
           </div>
 

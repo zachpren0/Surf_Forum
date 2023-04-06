@@ -37,10 +37,14 @@ session_start();
                         if (isset($_SESSION["userid"])){
                           echo "<a class='nav-link text-black' href='account.php?id=".$_SESSION["userid"]."'>Profile</a>";
                           echo "<a class='nav-link text-black' href='includes/logout.inc.php'>Logout</a>";
+                        
+                          if (isset($_SESSION["admin"])){
+                          echo "<a class='nav-link text-black' href='admin.php'>Admin</a>";
+                          } 
+                        
                         } else {
                           echo "<a class='nav-link text-black' href='signup.php'>Signup</a>";
                           echo "<a class='nav-link text-black' href='login.php'>Login</a>";
-                          echo "<a class='nav-link text-black' href='admin.php'>Admin</a>";
                         }
                         ?>
                     </nav>
