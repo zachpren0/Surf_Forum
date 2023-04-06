@@ -1,5 +1,7 @@
 <?php
 include_once 'header.php';
+include_once 'includes/db.inc.php';
+include_once 'includes/functions.inc.php';
 ?>
 
         <main>
@@ -17,17 +19,7 @@ include_once 'header.php';
                  <div class="col-8">
                   
                    
-                    <form class="admin-form" action="http://www.randyconnolly.com/tests/process.php">
-                      <div class="input-group">
-                      
-                      <input type="text" class="form-control rounded-left " placeholder="Search.." name="search" aria-label="Search" aria-describedby="search-addon">
-                      
-
-                      
-                      <button type="submit" class="btn bg-blue text-black ">Submit</button>
-                      
-                    </div>
-                    </form>
+                    
 
                   
                  </div>
@@ -63,15 +55,11 @@ include_once 'header.php';
                     <thead>
                       <tr>
                         <th scope="col">User</th>
-                        <th scope="col">Post_Name</th>
+                        <th scope="col">Email</th>
                         
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row"><a href="account.php"> User_Name </a></th>
-                        <td><a href="post.php"> Post_Name </a></td>
-                      </tr>
                       <?php
                       $stmt = mysqli_stmt_init($conn);
                       $sql = "SELECT * FROM USER";
@@ -84,26 +72,15 @@ include_once 'header.php';
                       if($result->num_rows > 0){
                         while($row = $result->fetch_assoc()) {
                           echo '<tr>';
-                          echo '<th scope="row">'.$row['username'].'</th>';
+                          echo '<th scope="row"><a href="account.php?id='.$row['id'].'">'.$row['username'].'</a></th>';
                           echo '<td>'.$row['email'].'</td>';
                           echo '</tr>';
                         }
                       } else {
                         echo "No users found";
                       }
-                        
                         mysqli_stmt_close($stmt);
                       ?>
-                      <tr>
-                        <th scope="row">DummyUser</th>
-                        <td>Post_Name_2</td>
-                        
-                      </tr>
-                      <tr>
-                        <th scope="row">DummyUser2</th>
-                        <td>Post_Name_3</td>
-                        
-                      </tr>
                     </tbody>
                   </table>
                 </div>
