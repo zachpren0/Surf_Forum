@@ -35,7 +35,7 @@ if(!isset($userProfile) || !isset($userId)) {
         <div class="container-fluid top-buffer">
           <div class="row bg-beige3 p-4">
             <div class="col-2">
-              <img src="images/profile.png" class="img-responsive img-thumbnail">
+              <img src="<?php echo $userProfile['image_url'] ?>" class="img-responsive img-thumbnail">
             </div>
             <div class="col-10">
               <ul class="list-group list-group-flush">
@@ -117,11 +117,19 @@ if(!isset($userProfile) || !isset($userId)) {
               </div>
               <form method="post" action="includes/changePPic.inc.php">
                 <div class="modal-body">
-                  Upload picture here
-                    
-                    File Upload:<br>
-                    <input type="file" name="fileToUpload" id="fileToUpload">
-                    <input type="hidden" id="profileId" name="profileId" value="<?php echo $userId; ?>">
+                  Choose Profile picture:<br>
+                  <input type="radio" id="pic1" name="ppicURL" value="https://as1.ftcdn.net/v2/jpg/05/74/65/48/1000_F_574654895_DzrGLRsENvLdhr3wwcmYjivaHAK3x331.jpg">
+                  <label for="html"><img src="https://as1.ftcdn.net/v2/jpg/05/74/65/48/1000_F_574654895_DzrGLRsENvLdhr3wwcmYjivaHAK3x331.jpg" width="150"></label><br>
+                  <input type="radio" id="pic2" name="ppicURL" value="https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/39650/surfer-clipart-md.png">
+                  <label for="css"><img src="https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/39650/surfer-clipart-md.png" width="150"></label><br>
+                  <input type="radio" id="pic3" name="ppicURL" value="https://www.seekpng.com/png/full/112-1126591_surfer-image-logo-black-and-white-surfing-clipart.png">
+                  <label for="css"><img src="https://www.seekpng.com/png/full/112-1126591_surfer-image-logo-black-and-white-surfing-clipart.png" width="150"></label><br>
+                  <input type="radio" id="pic4" name="ppicURL" value="https://w7.pngwing.com/pngs/908/407/png-transparent-club-penguin-vanimo-surfing-penguins-animals-vertebrate-cartoon.png">
+                  <label for="css"><img src="https://w7.pngwing.com/pngs/908/407/png-transparent-club-penguin-vanimo-surfing-penguins-animals-vertebrate-cartoon.png" width="150"></label><br>
+                  <input type="radio" id="pic5" name="ppicURL" value="https://www.vhv.rs/dpng/d/228-2280321_free-sea-lion-pinniped-clip-art-transparent-background.png">
+                  <label for="css"><img src="https://www.vhv.rs/dpng/d/228-2280321_free-sea-lion-pinniped-clip-art-transparent-background.png" width="150"></label><br>
+                  <input type="radio" id="pic6" name="ppicURL" value="https://www.clipartmax.com/png/middle/76-760861_tiger-shark-clipart-mouth-open-clip-art-great-white-shark-clip-art.png">
+                  <label for="css"><img src="https://www.clipartmax.com/png/middle/76-760861_tiger-shark-clipart-mouth-open-clip-art-great-white-shark-clip-art.png" width="150"></label><br>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
