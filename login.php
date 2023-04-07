@@ -29,7 +29,7 @@ include_once 'header.php';
                               <input type="text" name="username" class="form-control required" id="InputUser" placeholder='Username / Email'>
                             </div>
                             <div class="mb-5">
-                              <label for="password" class="form-label">Password test</label>
+                              <label for="password" class="form-label">Password</label>
                               <input type="password" name="password" class="form-control required">
                             </div>
                             <div class="mb-5 text-center d-grid gap-2 col-12 mx-auto">

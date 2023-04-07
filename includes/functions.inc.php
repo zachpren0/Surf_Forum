@@ -82,15 +82,17 @@ function uidExists($conn, $username, $email){
 function createUser($conn,$email,$username,$password){
     // prepare a statement to query the database for the username
     $stmt = mysqli_stmt_init($conn);
-    $sql = "INSERT INTO USER (username, password_hash, email) VALUES (?,?,?);";
+    $sql = "INSERT INTO USER (username, password_hash, email, image_url) VALUES (?,?,?,?);";
 
     if (!mysqli_stmt_prepare($stmt, $sql)){
         header("location: ../signup.php?error=stmtFailed");
     }
 
+    $default_url = "https://as1.ftcdn.net/v2/jpg/05/74/65/48/1000_F_574654895_DzrGLRsENvLdhr3wwcmYjivaHAK3x331.jpg";
+
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    mysqli_stmt_bind_param($stmt, "sss", $username, $hashedPassword, $email);
+    mysqli_stmt_bind_param($stmt, "ssss", $username, $hashedPassword, $email, $default_url);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
