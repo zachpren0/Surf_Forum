@@ -65,10 +65,11 @@ if(isset($_SESSION['catId'])) {
 
                         <form method="post" id="commentForm" action="includes/post.inc.php">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="changeProfileHeading">Profile</h5>
+                          <h5 class="modal-title" id="changeProfileHeading">new post for category: <?php echo $categoryTitle; ?></h5>
                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
+                              <div style="display: none;">
                               <label for="categoryId" class="form-label">Category ID</label>
                               <input type="text" name="categoryId" class="form-control required" id="categoryId" value="<?php echo $categoryId ?>" readonly>
                               <div id="userHelp" class="form-text">This cannot be changed</div>
@@ -80,7 +81,7 @@ if(isset($_SESSION['catId'])) {
                               <label for="userId" class="form-label">User ID</label>
                               <input type="text" name="userId" class="form-control required" id="userId" value="<?php if (isset($_SESSION['userid'])){echo $_SESSION['userid'];} ?>" readonly>
                               <div id="userHelp" class="form-text">This is determined by your login credentials and cannot be changed</div>
-
+                              </div>
 
                               <label for="username" class="form-label">Post Title:</label>
                               <input type="text" name="newPostTitle" class="form-control required" id="InputUser">

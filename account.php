@@ -40,11 +40,17 @@ if(!isset($userProfile) || !isset($userId)) {
             <div class="col-10">
               <ul class="list-group list-group-flush">
                 <li class="list-group-item bg-beige3"><b>Username: </b> <?php echo $userProfile['username'] ?> </li>
-                <li class="list-group-item bg-beige3"><b>User ID: </b> <?php echo $userProfile['id'] ?> </li>
+                <?php if (isset($_SESSION["admin"])){
+                          echo "<li class='list-group-item bg-beige3'><b>User ID: </b>".$userProfile['id']."</li>";
+                        } ?>
+                
                 <li class="list-group-item bg-beige3"><b>Favourite surfing style: </b> <?php echo $userProfile['sStyle'] ?> </li>
                 <li class="list-group-item bg-beige3"><b>Favourite surf spot: </b> <?php echo $userProfile['sSpot'] ?> </li>
                 <li class="list-group-item bg-beige3"><b>Best break in the world:</b> <?php echo $userProfile['break'] ?> </li>
-                <li class="list-group-item bg-beige3"><b>Account status:</b> <?php echo $userProfile['is_enabled']?'Enabled':'Disabled' ?> </li>
+                <?php if (isset($_SESSION["admin"])){
+                echo "<li class='list-group-item bg-beige3'><b> Account status: </b>" . ($userProfile['is_enabled'] ? 'Enabled' : 'Disabled') ."</li>";
+                } ?>
+                
               </ul>
             </div>
             <!-- user start -->
@@ -65,9 +71,9 @@ if(!isset($userProfile) || !isset($userId)) {
             <div class="d-grid col">
               <?php
               if (isset($_SESSION['userid']) && strcmp($userId, $_SESSION['userid']) === 0) {
-                echo '<form action="https://en.wikipedia.org/wiki/Hippopotamus" class="text-center d-grid col-12">';
-                echo '<button type="submit" class="btn bg-blue">reset password</button>';
-                echo '</form>';
+                
+                echo '<button type="submit" class="btn bg-blue" data-bs-toggle="modal" data-bs-target="#resetpw">reset password</button>';
+                
               }
               ?>
             </div>
@@ -170,6 +176,63 @@ if(!isset($userProfile) || !isset($userId)) {
           </form>
           </div>
         </div>
+
+                    <!--Reset PW modal -->
+        <div class="modal fade" id="resetpw" tabindex="-1" aria-labelledby="profile" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <form method="post" action="includes/resetPassword.inc.php">
+                <div style="display: none;">
+                <input type="text" name="username" class="form-control required" id="username" value="<?php echo $userProfile['username'] ?>" >
+                <input type="text" name="userID" class="form-control required" id="userID" value="<?php echo $userId ?>" > </div>
+              <div class="modal-header">
+                <h5 class="modal-title" id="changeProfileHeading">Reset Password</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><b>Old Password </b>
+                    <input type="text" name="oldpw" class="form-control required" id="InputSStyle" value="">
+                  </li>
+                  <li class="list-group-item"><b>New Password </b>
+                    <input type="text" name="newpw" class="form-control required" id="InputSSpot" value="">
+                  </li>
+                  <li class="list-group-item"><b>Retype New Password</b>
+                    <input type="text" name="newpwrepeat" class="form-control required" id="InputBreak" value="">
+                  </li>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" name="submit" class="btn btn-primary">Save</button>
+              </div>
+            </div>
+          </form>
+          </div>
+        </div>
+
+        <?php
+                            if(isset($_GET["reset"])){
+                              if ($_GET["reset"]== "passwordMatch"){
+                                
+                                echo "<script type='text/javascript'>alert('new passwords dont match');</script>";
+                            } 
+                            else if ($_GET["reset"]== "wrongPassword"){
+                              echo "<script type='text/javascript'>alert('wrong password');</script>";
+                            }
+                            else if ($_GET["reset"]== "stmtError"){
+                              echo "<script type='text/javascript'>alert('something went wrong');</script>";
+                            }
+                            else if ($_GET["reset"]== "stmtError"){
+                              echo "<script type='text/javascript'>alert('something went wrong');</script>";
+                            }
+                            else if ($_GET["reset"]== "success"){
+                              echo "<script type='text/javascript'>alert('Password Changed!');</script>";
+                            }
+                            
+                          }
+
+                          ?>
 
         </main>
 

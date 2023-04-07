@@ -94,7 +94,7 @@ function createUser($conn,$email,$username,$password){
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
-    header("location: ../signup.php?error=none");
+    header("location: ../login.php?message=congrats");
     exit();
   
 }
@@ -253,3 +253,42 @@ function getCategoryTitle($postId, $conn) {
     // Return
     return $postBody;
   }
+
+  function resetPassword($conn, $username, $email, $oldPassword, $newPassword,$id){
+    // check if the user exists
+    $user = uidExists($conn, $username, $email);
+
+    if (!$user){
+        header("location: ../account.php?reset=wrongUsername&id=".$id."");
+        exit();
+    }
+
+    // check if the old password matches
+    if (!password_verify($oldPassword, $user['password_hash'])){
+
+        header("location: ../account.php?reset=wrongPassword&id=".$id."");
+        exit();
+    }
+
+    // generate a new password hash
+    $newPasswordHash = password_hash($newPassword, PASSWORD_DEFAULT);
+
+    // update the user's password hash in the database
+    $stmt = mysqli_stmt_init($conn);
+    $sql = "UPDATE USER SET password_hash=? WHERE id=?";
+
+    if (!mysqli_stmt_prepare($stmt, $sql)){
+        header("location: ../account.php?reset=stmtError&id=".$id."");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "si", $newPasswordHash, $user['id']);
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    header("location: ../account.php?reset=success&id=".$id."");
+        exit();
+
+    
+}

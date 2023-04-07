@@ -18,6 +18,10 @@ include_once 'header.php';
           <div class="container">
             <div class="row bg-beige3 rounded top-buffer d-flex">
                     <div class="col-6 offset-3 top-buffer bottom-buffer">
+                            <?php
+                            if ($_GET["message"] == "congrats"){
+                              echo "<p>Congrats! You signed up. Please log in with your credentials</p>";
+                            }?>
 
                         <form method="post" id="signupForm" action="includes/login.inc.php">
                             <div class="mb-3">
