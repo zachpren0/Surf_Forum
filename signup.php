@@ -44,7 +44,7 @@ include_once 'header.php';
                           <?php
                             if(isset($_GET["error"])){
                               if ($_GET["error"]== "emptyInput"){
-                                echo "<p>Missing Fields</p>";
+                                echo "<p>Please make sure to fill out all fields on the above form</p>";
                             } 
                             else if ($_GET["error"]== "invalidUid"){
                               echo "<p>Username Invalid</p>";
