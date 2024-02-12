@@ -1,10 +1,8 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/enf2qyfT)
 # COSC 360 – Project Proposal
 ---
 ## project description
-This repository contains a website built using the LAMP stack: Linux, Apache, MySQL, PHP; which will allow us to incorporate all elements of a traditional website, including database access, and separation of front and back end. It will be a message board website similar to Reddit/Twitter, where users can engage in discussion online by making posts or making comments on other posts. Administrators will have greater control over particular aspects of the website including moderation of user posts and comments.
-## stack/dependency install instructions
-<work in progress>
+This repository contains a website built using the LAMP stack: Linux, Apache, MySQL, PHP; which will allow us to incorporate all elements of a traditional website, including database access, and separation of front and back end. It will be a message board website similar to Reddit/Twitter, where users can engage in discussion online by making posts or making comments on other posts. Administrators will have greater control over particular aspects of the website including moderation of user posts and comments.\
+View a more detailed description at: https://zacheryprenovost.com/surf.html
   
 ## General Website Requirements
 - Original styling on all pages using bootstrap
